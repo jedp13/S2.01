@@ -26,7 +26,9 @@ namespace MatInfo.Model
 
         public void Create()
         {
-            throw new NotImplementedException();
+            DataAccess accesBD = new DataAccess();
+            String requete = "insert into categorie_materiel(nomcategorie) values ();";
+            accesBD.SetData(requete);
         }
 
         public void Delete()

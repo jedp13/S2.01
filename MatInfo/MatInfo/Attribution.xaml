@@ -4,8 +4,12 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MatInfo"
+                    xmlns:model="clr-namespace:MatInfo.Model"
         mc:Ignorable="d"
         Title="Attribution" Height="450" Width="800" WindowStartupLocation="CenterScreen">
+    <Window.DataContext>
+        <model:ApplicationData x:Name="applicationData" />
+    </Window.DataContext>
     <StackPanel>
         <StackPanel Orientation="Horizontal">
             <Button x:Name="btCM" Content="Categorie de materiel" Margin="20,0,0,0" Click="btCM_Click"/>
@@ -18,9 +22,19 @@
         <Label HorizontalAlignment="Left" Content="Liste des attributions" Margin="20,0,0,0" />
 
         <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="0,10,0,0">
-            <ListBox Width="406" d:ItemsSource="{d:SampleData ItemCount=5}" Height="319" Margin="20,0,0,0"/>
+            <ListView Height="321" Width="406" Margin="20,0,0,0" ItemsSource="{Binding Path=LesAttributions}">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="ID Personnel " DisplayMemberBinding="{Binding Path=IdPersonnel}" />
+                        <GridViewColumn Header="ID Matériel" DisplayMemberBinding="{Binding Path=FK_IdMateriel}" />
+                        <GridViewColumn Header="Date" DisplayMemberBinding="{Binding Path=DateAttribution}" />
+                        <GridViewColumn Header="Commentaire" DisplayMemberBinding="{Binding Path=CommentaireAttribution}" />
+
+                    </GridView>
+                </ListView.View>
+            </ListView>
             <StackPanel Width="307">
-                <Button Content="Créer" Width="252" Height="40" Margin="40,30,0,0" HorizontalAlignment="Center"/>
+                <Button Content="Créer" Width="252" Height="40" Margin="40,30,0,0" HorizontalAlignment="Center" />
                 <Button Content="Modifier" Width="252" Height="40" Margin="40,30,0,0"/>
                 <Button Content="Supprimer" Width="252" Height="40" Margin="40,30,0,0"/>
                 

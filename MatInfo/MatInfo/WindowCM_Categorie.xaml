@@ -1,0 +1,16 @@
+﻿<Window x:Class="MatInfo.WindowCM_Categorie"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MatInfo"
+        mc:Ignorable="d"
+        Title="WindowCM_Categorie" Height="200" Width="300" WindowStartupLocation="CenterOwner">
+    <Grid>
+        <Label Content="Nom de la catégorie : " HorizontalAlignment="Center" Margin="0,66,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="tbCategorie" HorizontalAlignment="Center" Margin="0,92,0,0" TextWrapping="Wrap" Text="{Binding NomCategorie,ValidatesOnExceptions=True}" VerticalAlignment="Top" Width="128" />
+        <Button x:Name="btAnnuler" Content="Ajouter" Click="BtAnnuler_Click" HorizontalAlignment="Left" Margin="86,132,0,0" VerticalAlignment="Top" Width="64"/>
+        <Button x:Name="btCreer" Content="Annuler" Click="BtCreer_Click" HorizontalAlignment="Left" Margin="155,132,0,0" VerticalAlignment="Top" Width="64"/>
+
+    </Grid>
+</Window>

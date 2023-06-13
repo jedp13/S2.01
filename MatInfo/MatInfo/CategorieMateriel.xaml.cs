@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MatInfo.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -54,6 +55,29 @@ namespace MatInfo
             personnel.ShowDialog();
         }
 
-        
+        private void btCreer_Click(object sender, RoutedEventArgs e)
+        {
+            WindowCM_Categorie winAjoutCategorie = new WindowCM_Categorie(new CategorieMateriel(), Mode.Insert);
+            winAjoutCategorie.Owner = this;
+
+            bool reponse = (bool)winAjoutCategorie.ShowDialog();
+            if (reponse == true)
+            {
+                //winAjoutCategorie.(CategorieMateriel)DataContext.Creer();
+            }
+        }
+
+        private void butModifier_Click(object sender, RoutedEventArgs e)
+        {
+            WindowCM_Categorie winAjoutCategorie = new WindowCM_Categorie((CategorieMateriel)lvCategorie.SelectedItem, Mode.Update);
+            winAjoutCategorie.Owner = this;
+
+            bool reponse = (bool)winAjoutCategorie.ShowDialog();
+            if (reponse == true)
+            {
+                lvCategorie.Items.Refresh();
+            }
+
+        }
     }   
 }

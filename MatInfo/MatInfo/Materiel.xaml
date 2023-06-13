@@ -4,12 +4,17 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="clr-namespace:MatInfo"
+        xmlns:model="clr-namespace:MatInfo.Model"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     Title="Materiel"
     Width="800"
     Height="450"
     WindowStartupLocation="CenterScreen"
     mc:Ignorable="d">
+    <Window.DataContext>
+        <model:ApplicationData x:Name="applicationData" />
+    </Window.DataContext>
+    
     <StackPanel>
         <StackPanel Orientation="Horizontal">
             <Button x:Name="btCM" Content="Categorie de materiel" Margin="20,0,0,0" Click="btCM_Click"/>
@@ -25,11 +30,17 @@
             Margin="0,10,0,0"
             VerticalAlignment="Center"
             Orientation="Horizontal">
-            <ListBox
-                Width="406"
-                Height="323"
-                Margin="20,0,0,0"
-                d:ItemsSource="{d:SampleData ItemCount=5}" />
+            <ListView Height="323" Width="406" Margin="20,0,0,0" ItemsSource="{Binding Path=LesMateriaux}">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="ID" DisplayMemberBinding="{Binding Path=IdMateriel}" />
+                        <GridViewColumn Header="Nom" DisplayMemberBinding="{Binding Path=NomMateriel}" />
+                        <GridViewColumn Header="Référence constructeur" DisplayMemberBinding="{Binding Path=ReferenceConstructeur}" />
+                        <GridViewColumn Header="Codebarre Inventaire" DisplayMemberBinding="{Binding Path=CodeBarreInventaire}" />
+
+                    </GridView>
+                </ListView.View>
+            </ListView>
             <StackPanel Width="307">
                 <Button
                     Width="252"
