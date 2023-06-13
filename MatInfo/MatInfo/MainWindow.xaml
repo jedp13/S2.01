@@ -1,12 +1,54 @@
-﻿<Window x:Class="MatInfo.MainWindow"
-        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:MatInfo"
-        mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
+﻿<Window
+    x:Class="MatInfo.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:MatInfo"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:model="clr-namespace:MatInfo.Model"
+    Title="MainWindow"
+    Width="800"
+    Height="450"
+    WindowStartupLocation="CenterScreen"
+    mc:Ignorable="d">
+    <Window.DataContext>
+        <model:ApplicationData x:Name="applicationData" />
+    </Window.DataContext>
+    <StackPanel VerticalAlignment="Center" Orientation="Horizontal">
+        <ListBox
+            Width="406"
+            Height="386"
+            Margin="20,0,0,0"
+            d:ItemsSource="{d:SampleData ItemCount=5}" />
 
-    </Grid>
+        <StackPanel Width="307">
+            <Button
+                Width="252"
+                Height="40"
+                Margin="40,30,0,0"
+                HorizontalAlignment="Center"
+                Click="Button_Click"
+                Content="Categorie de materiel" />
+            <Button
+                Width="252"
+                Height="40"
+                Margin="40,30,0,0"
+                Click="Button_Click_1"
+                Content="Materiel" />
+            <Button
+                Width="252"
+                Height="40"
+                Margin="40,30,0,0"
+                Click="Button_Click_2"
+                Content="Attribution" />
+            <Button
+                Width="252"
+                Height="40"
+                Margin="40,30,0,0"
+                Click="Button_Click_3"
+                Content="Personnel" />
+        </StackPanel>
+
+
+    </StackPanel>
 </Window>

@@ -10,54 +10,51 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
-using MatInfo;
 
 namespace MatInfo
 {
     /// <summary>
-    /// Logique d'interaction pour MainWindow.xaml
+    /// Logique d'interaction pour Attribution.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class Attribution : Window
     {
-        public MainWindow()
+        public Attribution()
         {
             InitializeComponent();
-            seConnecter connecter = new seConnecter();
-            connecter.ShowDialog();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void btCM_Click(object sender, RoutedEventArgs e)
         {
-            
+            this.Close();
             CategorieMateriel categorieMateriel = new CategorieMateriel();
             categorieMateriel.ShowDialog();
-            this.Close();
+            
         }
 
-        private void Button_Click_1(object sender, RoutedEventArgs e)
+        private void btM_Click(object sender, RoutedEventArgs e)
         {
-            
+            this.Close();
             Materiel materiel = new Materiel();
             materiel.ShowDialog();
-            this.Close();
+            
         }
 
-        private void Button_Click_2(object sender, RoutedEventArgs e)
+        private void btA_Click(object sender, RoutedEventArgs e)
         {
-            
+            this.Close();
             Attribution attribution = new Attribution();
             attribution.ShowDialog();
-            this.Close();
+            
         }
 
-        private void Button_Click_3(object sender, RoutedEventArgs e)
+        private void btP_Click(object sender, RoutedEventArgs e)
         {
-            
+            this.Close();
             Personnel personnel = new Personnel();
             personnel.ShowDialog();
-            this.Close();
         }
+
+       
     }
 }
