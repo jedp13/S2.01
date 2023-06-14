@@ -31,7 +31,7 @@ namespace MatInfo
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             
-            CategorieMateriel categorieMateriel = new CategorieMateriel();
+            CategorieMaterielW categorieMateriel = new CategorieMaterielW();
             categorieMateriel.ShowDialog();
             this.Close();
         }

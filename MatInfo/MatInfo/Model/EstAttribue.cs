@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace MatInfo.Model
 {
-    internal class EstAttribue : Crud<EstAttribue>
+    public class EstAttribue : Crud<EstAttribue>
     {
         public EstAttribue(int fK_IdPersonnel, int fK_IdMateriel, DateTime dateAttribution, string commentaireAttribution)
         {

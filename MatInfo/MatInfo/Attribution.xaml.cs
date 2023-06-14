@@ -27,7 +27,8 @@ namespace MatInfo
         private void btCM_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
-            CategorieMateriel categorieMateriel = new CategorieMateriel();
+
+            CategorieMaterielW categorieMateriel = new CategorieMaterielW();
             categorieMateriel.ShowDialog();
             
         }

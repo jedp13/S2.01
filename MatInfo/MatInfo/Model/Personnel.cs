@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace MatInfo.Model
 {
-    internal class Personnel : Crud<Personnel>
+    public class Personnel : Crud<Personnel>
     {
         public Personnel(int idPersonnel, string emailPersonnel, string nomPersonnel, string prenomPersonnel)
         {

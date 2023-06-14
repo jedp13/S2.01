@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace MatInfo.Model
 {
-    internal class Materiel : Crud<Materiel>
+    public class Materiel : Crud<Materiel>
     {
         public Materiel(int idMateriel, int fK_IdCategorie, string nomMateriel, string referenceConstructeur, string codeBarreInventaire)
         {

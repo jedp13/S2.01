@@ -12,17 +12,19 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using MatInfo;
 
 namespace MatInfo
 {
     /// <summary>
     /// Logique d'interaction pour CategorieMateriel.xaml
     /// </summary>
-    public partial class CategorieMateriel : Window
+    public partial class CategorieMaterielW : Window
     {
-        public CategorieMateriel()
+        public CategorieMaterielW()
         {
             InitializeComponent();
+            lvCategorie.SelectedIndex = 0;
         }
 
        
@@ -30,7 +32,7 @@ namespace MatInfo
         private void btCM_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
-            CategorieMateriel categorieMateriel = new CategorieMateriel();
+            CategorieMaterielW categorieMateriel = new CategorieMaterielW();
             categorieMateriel.ShowDialog();
         }
 
@@ -61,23 +63,28 @@ namespace MatInfo
             winAjoutCategorie.Owner = this;
 
             bool reponse = (bool)winAjoutCategorie.ShowDialog();
-            if (reponse == true)
+            if (reponse == true && winAjoutCategorie.DataContext is CategorieMateriel)
             {
-                //winAjoutCategorie.(CategorieMateriel)DataContext.Creer();
+                (CategorieMateriel)winAjoutCategorie.DataContext.Create();
             }
         }
 
-        private void butModifier_Click(object sender, RoutedEventArgs e)
+        private void btModifier_Click(object sender, RoutedEventArgs e)
         {
-            WindowCM_Categorie winAjoutCategorie = new WindowCM_Categorie((CategorieMateriel)lvCategorie.SelectedItem, Mode.Update);
-            winAjoutCategorie.Owner = this;
 
-            bool reponse = (bool)winAjoutCategorie.ShowDialog();
-            if (reponse == true)
-            {
-                lvCategorie.Items.Refresh();
-            }
+                WindowCM_Categorie winAjoutCategorie = new WindowCM_Categorie((CategorieMateriel)lvCategorie.SelectedItem, Mode.Update);
+                winAjoutCategorie.Owner = this;
+
+                bool reponse = (bool)winAjoutCategorie.ShowDialog();
+                if (reponse == true)
+                {
+                    (CategorieMateriel)winAjoutCategorie.DataContext.Update();
+                }
+            
+            
 
         }
+
+
     }   
 }

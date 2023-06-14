@@ -5,10 +5,11 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using MatInfo;
 
 namespace MatInfo.Model
 {
-    internal class CategorieMateriel : Crud<CategorieMateriel>
+    public class CategorieMateriel : Crud<CategorieMateriel>
     {
         public CategorieMateriel(int idCategorie, string nomCategorie)
         {
@@ -27,7 +28,7 @@ namespace MatInfo.Model
         public void Create()
         {
             DataAccess accesBD = new DataAccess();
-            String requete = "insert into categorie_materiel(nomcategorie) values ();";
+            String requete = "insert into categorie_materiel(nomcategorie) values ("+this.NomCategorie+");";
             accesBD.SetData(requete);
         }
 
@@ -65,7 +66,9 @@ namespace MatInfo.Model
 
         public void Update()
         {
-            throw new NotImplementedException();
+            DataAccess accesBD = new DataAccess();
+            String requete = "Update categorie_materiel,SET nomcategorie='"+this.NomCategorie+"',where idcategorie='"+this.IdCategorie+"'" ;
+            accesBD.SetData(requete);
         }
     }
 }
