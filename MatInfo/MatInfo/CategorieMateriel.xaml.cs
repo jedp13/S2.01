@@ -67,7 +67,6 @@ namespace MatInfo
             {
                 CategorieMateriel c = (CategorieMateriel)winAjoutCategorie.DataContext;
                 c.Create();
-                lvCategorie.Items.Refresh();
             }
         }
 
