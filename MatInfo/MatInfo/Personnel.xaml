@@ -30,7 +30,7 @@
             VerticalAlignment="Center"
             Orientation="Horizontal">
 
-            <ListView Height="321" Width="406" Margin="20,0,0,0" ItemsSource="{Binding Path=LesPersonnels}">
+            <ListView x:Name="lvPersonnel" Height="321" Width="406" Margin="20,0,0,0" ItemsSource="{Binding Path=LesPersonnels}">
                 <ListView.View>
                     <GridView>
                         <GridViewColumn Header="ID" DisplayMemberBinding="{Binding Path=IdPersonnel}" />
@@ -43,21 +43,26 @@
             </ListView>
             <StackPanel Width="307">
                 <Button
+                    x:Name="btCreer"
                     Width="252"
                     Height="40"
                     Margin="40,30,0,0"
                     HorizontalAlignment="Center"
-                    Content="Créer" />
+                    Content="Créer" Click="btCreer_Click" />
                 <Button
+                                        x:Name="btModif"
+
                     Width="252"
                     Height="40"
                     Margin="40,30,0,0"
-                    Content="Modifier" />
+                    Content="Modifier" Click="btModif_Click" />
                 <Button
+                                        x:Name="btSupr"
+
                     Width="252"
                     Height="40"
                     Margin="40,30,0,0"
-                    Content="Supprimer" />
+                    Content="Supprimer" Click="btSupr_Click" />
               
             </StackPanel>
 

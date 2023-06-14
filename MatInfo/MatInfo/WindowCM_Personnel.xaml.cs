@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using MatInfo.Model;
 
 namespace MatInfo
 {
@@ -19,9 +20,42 @@ namespace MatInfo
     /// </summary>
     public partial class WindowCM_Personnel : Window
     {
-        public WindowCM_Personnel()
+        public WindowCM_Personnel(Personnel perso,Mode mode)
         {
+            this.DataContext = perso;
             InitializeComponent();
+            if (mode == Mode.Update)
+            {
+                btCreer.Content = "Modifier";
+                this.Title = "Modification personnel";
+            }
+            else if (mode == Mode.Insert)
+            {
+                btCreer.Content = "Ajouter";
+                this.Title = "Ajout personnel";
+            }
+        }
+
+        private void BtCreer_Click(object sender, RoutedEventArgs e)
+        {
+            // on doit déclencher la mise à jour du binding
+            this.tbPrenomPerso.GetBindingExpression(TextBox.TextProperty).UpdateSource();
+            this.tbNomPerso.GetBindingExpression(TextBox.TextProperty).UpdateSource();
+            this.tbMailPerso.GetBindingExpression(TextBox.TextProperty).UpdateSource();
+
+
+            if (Validation.GetHasError((DependencyObject)tbPrenomPerso) || Validation.GetHasError((DependencyObject)tbNomPerso) || Validation.GetHasError((DependencyObject)tbMailPerso))
+                MessageBox.Show(this.Owner, "Pas possible!", "Pb", MessageBoxButton.OK, MessageBoxImage.Error);
+            else
+            {
+                DialogResult = true;   // ferme automatiquement la fenêtre      
+            }
+        }
+
+        private void BtAnnuler_Click(object sender, RoutedEventArgs e)
+        {
+            DialogResult = false; // ferme automatiquement la fenêtre      
         }
     }
+    
 }

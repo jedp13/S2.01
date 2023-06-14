@@ -5,8 +5,17 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MatInfo"
         mc:Ignorable="d"
-        Title="WindowCM_Personnel" Height="450" Width="800">
+        Title="WindowCM_Categorie" Height="200" Width="300" WindowStartupLocation="CenterOwner">
     <Grid>
-        
+        <Label Content="Nom du personnel : " HorizontalAlignment="Center" Margin="0,54,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="tbNomPerso" HorizontalAlignment="Center" Margin="0,80,0,0" TextWrapping="Wrap" Text="{Binding PrenomPersonnel,ValidatesOnExceptions=True}" VerticalAlignment="Top" Width="128" />
+        <Label Content="Prenom du personnel : " HorizontalAlignment="Center" Margin="0,5,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="tbPrenomPerso" HorizontalAlignment="Center" Margin="0,31,0,0" TextWrapping="Wrap" Text="{Binding NomPersonnel,ValidatesOnExceptions=True}" VerticalAlignment="Top" Width="128" />
+        <Label Content="Mail du personnel : " HorizontalAlignment="Center" Margin="0,103,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="tbMailPerso" HorizontalAlignment="Center" Margin="0,124,0,0" TextWrapping="Wrap" Text="{Binding EmailPersonnel,ValidatesOnExceptions=True}" VerticalAlignment="Top" Width="128" />
+
+        <Button x:Name="btCreer" Content="Ajouter" Click="BtCreer_Click" HorizontalAlignment="Left" Margin="86,147,0,0" VerticalAlignment="Top" Width="64" RenderTransformOrigin="0.539,1.655"/>
+        <Button x:Name="btAnnuler" Content="Annuler" Click="BtAnnuler_Click" HorizontalAlignment="Left" Margin="150,147,0,0" VerticalAlignment="Top" Width="64" RenderTransformOrigin="0.516,1.756"/>
+
     </Grid>
 </Window>

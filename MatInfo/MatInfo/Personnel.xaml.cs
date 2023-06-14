@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MatInfo.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -22,6 +23,7 @@ namespace MatInfo
         public WPersonnel()
         {
             InitializeComponent();
+            lvPersonnel.SelectedIndex = 0;
         }
 
         private void btCM_Click(object sender, RoutedEventArgs e)
@@ -53,6 +55,42 @@ namespace MatInfo
             personnel.ShowDialog();
         }
 
-        
+        private void btCreer_Click(object sender, RoutedEventArgs e)
+        {
+            WindowCM_Personnel winAjoutPersonnel = new WindowCM_Personnel(new Personnel(), Mode.Insert);
+            winAjoutPersonnel.Owner = this;
+
+            bool reponse = (bool)winAjoutPersonnel.ShowDialog();
+            if (reponse == true && winAjoutPersonnel.DataContext is Personnel)
+            {
+                Personnel p = (Personnel)winAjoutPersonnel.DataContext;
+                p.Create();
+            }
+        }
+
+        private void btModif_Click(object sender, RoutedEventArgs e)
+        {
+            WindowCM_Personnel winAjoutPersonnel = new WindowCM_Personnel((Personnel)lvPersonnel.SelectedItem, Mode.Update);
+            winAjoutPersonnel.Owner = this;
+
+            bool reponse = (bool)winAjoutPersonnel.ShowDialog();
+            if (reponse == true)
+            {
+                Personnel p = (Personnel)winAjoutPersonnel.DataContext;
+                p.Update();
+            }
+        }
+
+        private void btSupr_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBoxResult result = MessageBox.Show(" Vous êtes sur de vouloir suprimer " + ((Personnel)lvPersonnel.SelectedItem).NomPersonnel+" "+ ((Personnel)lvPersonnel.SelectedItem).PrenomPersonnel, "Supprimer", MessageBoxButton.YesNo, MessageBoxImage.Warning);
+
+            if (result == MessageBoxResult.Yes)
+            {
+                Personnel p = (Personnel)lvPersonnel.SelectedItem;
+                p.Delete();
+                lvPersonnel.SelectedIndex = 0;
+            }
+        }
     }
 }

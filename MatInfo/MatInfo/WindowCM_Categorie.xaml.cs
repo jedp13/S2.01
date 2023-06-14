@@ -18,7 +18,6 @@ namespace MatInfo
     /// <summary>
     /// Logique d'interaction pour WindowCM_Categorie.xaml
     /// </summary>
-    public enum Mode { Insert, Update };
     public partial class WindowCM_Categorie : Window
     {
         public WindowCM_Categorie(CategorieMateriel cat, Mode mode)

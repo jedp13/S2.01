@@ -19,6 +19,8 @@ namespace MatInfo
     /// <summary>
     /// Logique d'interaction pour MainWindow.xaml
     /// </summary>
+    public enum Mode { Insert, Update };
+
     public partial class MainWindow : Window
     {
         public MainWindow()
