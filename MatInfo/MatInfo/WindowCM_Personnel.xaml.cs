@@ -38,18 +38,26 @@ namespace MatInfo
 
         private void BtCreer_Click(object sender, RoutedEventArgs e)
         {
-            // on doit déclencher la mise à jour du binding
-            this.tbPrenomPerso.GetBindingExpression(TextBox.TextProperty).UpdateSource();
-            this.tbNomPerso.GetBindingExpression(TextBox.TextProperty).UpdateSource();
-            this.tbMailPerso.GetBindingExpression(TextBox.TextProperty).UpdateSource();
-
-
-            if (Validation.GetHasError((DependencyObject)tbPrenomPerso) || Validation.GetHasError((DependencyObject)tbNomPerso) || Validation.GetHasError((DependencyObject)tbMailPerso))
-                MessageBox.Show(this.Owner, "Pas possible!", "Pb", MessageBoxButton.OK, MessageBoxImage.Error);
+            if (String.IsNullOrEmpty(tbPrenomPerso.Text) || String.IsNullOrEmpty(tbNomPerso.Text) || String.IsNullOrEmpty(tbMailPerso.Text))
+            {
+                MessageBox.Show("Erreur : Le nom, le prenom et le mail sont attendus !", "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
             else
             {
-                DialogResult = true;   // ferme automatiquement la fenêtre      
+                // on doit déclencher la mise à jour du binding
+                this.tbPrenomPerso.GetBindingExpression(TextBox.TextProperty).UpdateSource();
+                this.tbNomPerso.GetBindingExpression(TextBox.TextProperty).UpdateSource();
+                this.tbMailPerso.GetBindingExpression(TextBox.TextProperty).UpdateSource();
+
+
+                if (Validation.GetHasError((DependencyObject)tbPrenomPerso) || Validation.GetHasError((DependencyObject)tbNomPerso) || Validation.GetHasError((DependencyObject)tbMailPerso))
+                    MessageBox.Show(this.Owner, "Pas possible!", "Pb", MessageBoxButton.OK, MessageBoxImage.Error);
+                else
+                {
+                    DialogResult = true;   // ferme automatiquement la fenêtre      
+                }
             }
+          
         }
 
         private void BtAnnuler_Click(object sender, RoutedEventArgs e)

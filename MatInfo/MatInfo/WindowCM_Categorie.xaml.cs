@@ -38,7 +38,7 @@ namespace MatInfo
 
         private void BtCreer_Click(object sender, RoutedEventArgs e)
         {
-            if (String.IsNullOrEmpty(tbCategorie.Text) || String.IsNullOrEmpty(tbCategorie.Text))
+            if (String.IsNullOrEmpty(tbCategorie.Text))
             {
                 MessageBox.Show("Erreur : Nom de categorie attendu !", "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
             }
