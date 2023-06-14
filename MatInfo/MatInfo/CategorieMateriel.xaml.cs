@@ -65,7 +65,9 @@ namespace MatInfo
             bool reponse = (bool)winAjoutCategorie.ShowDialog();
             if (reponse == true && winAjoutCategorie.DataContext is CategorieMateriel)
             {
-                (CategorieMateriel)winAjoutCategorie.DataContext.Create();
+                CategorieMateriel c = (CategorieMateriel)winAjoutCategorie.DataContext;
+                c.Create();
+                lvCategorie.Items.Refresh();
             }
         }
 
@@ -78,13 +80,24 @@ namespace MatInfo
                 bool reponse = (bool)winAjoutCategorie.ShowDialog();
                 if (reponse == true)
                 {
-                    (CategorieMateriel)winAjoutCategorie.DataContext.Update();
+                    CategorieMateriel c = (CategorieMateriel)winAjoutCategorie.DataContext;
+                    c.Update();
                 }
             
             
 
         }
 
+        private void btSupprimer_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBoxResult result = MessageBox.Show(" Vous êtes sur de vouloir suprimer " + ((CategorieMateriel)lvCategorie.SelectedItem).NomCategorie, "Supprimer", MessageBoxButton.YesNo, MessageBoxImage.Warning);
 
+            if (result == MessageBoxResult.Yes)
+            {
+                CategorieMateriel c = (CategorieMateriel)lvCategorie.SelectedItem;
+                c.Delete();
+                lvCategorie.SelectedIndex = 0;
+            }
+        }
     }   
 }

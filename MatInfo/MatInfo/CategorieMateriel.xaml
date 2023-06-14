@@ -91,7 +91,7 @@
                     Width="252"
                     Height="40"
                     Margin="40,30,0,0"
-                    Content="Supprimer" />
+                    Content="Supprimer" Click="btSupprimer_Click" />
             </StackPanel>
 
 

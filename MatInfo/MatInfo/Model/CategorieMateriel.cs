@@ -28,13 +28,16 @@ namespace MatInfo.Model
         public void Create()
         {
             DataAccess accesBD = new DataAccess();
-            String requete = "insert into categorie_materiel(nomcategorie) values ("+this.NomCategorie+");";
-            accesBD.SetData(requete);
+            String requete = "insert into categorie_materiel(nomcategorie) values ('"+this.NomCategorie+"');";
+            DataTable datas = accesBD.GetData(requete);
         }
 
         public void Delete()
         {
-            throw new NotImplementedException();
+            DataAccess accesBD = new DataAccess();
+            String requete = "DELETE FROM categorie_materiel WHERE idcategorie='"+this.IdCategorie+"'";
+            DataTable datas = accesBD.GetData(requete);
+            
         }
 
         public ObservableCollection<CategorieMateriel> FindAll()
@@ -67,8 +70,8 @@ namespace MatInfo.Model
         public void Update()
         {
             DataAccess accesBD = new DataAccess();
-            String requete = "Update categorie_materiel,SET nomcategorie='"+this.NomCategorie+"',where idcategorie='"+this.IdCategorie+"'" ;
-            accesBD.SetData(requete);
+            String requete = "Update categorie_materiel SET nomcategorie='"+this.NomCategorie+"' where idcategorie='"+this.IdCategorie+"'" ;
+            DataTable datas = accesBD.GetData(requete);
         }
     }
 }
