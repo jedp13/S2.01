@@ -38,14 +38,22 @@ namespace MatInfo
 
         private void BtCreer_Click(object sender, RoutedEventArgs e)
         {
-            // on doit déclencher la mise à jour du binding
-            this.tbCategorie.GetBindingExpression(TextBox.TextProperty).UpdateSource();
-            if (Validation.GetHasError((DependencyObject)tbCategorie))
-                MessageBox.Show(this.Owner, "Pas possible!", "Pb", MessageBoxButton.OK, MessageBoxImage.Error);
+            if (String.IsNullOrEmpty(tbCategorie.Text) || String.IsNullOrEmpty(tbCategorie.Text))
+            {
+                MessageBox.Show("Erreur : Nom de categorie attendu !", "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
             else
             {
-                DialogResult = true;   // ferme automatiquement la fenêtre      
+                // on doit déclencher la mise à jour du binding
+                this.tbCategorie.GetBindingExpression(TextBox.TextProperty).UpdateSource();
+                if (Validation.GetHasError((DependencyObject)tbCategorie))
+                    MessageBox.Show(this.Owner, "Pas possible!", "Pb", MessageBoxButton.OK, MessageBoxImage.Error);
+                else
+                {
+                    DialogResult = true;   // ferme automatiquement la fenêtre      
+                }
             }
+           
         }
 
         private void BtAnnuler_Click(object sender, RoutedEventArgs e)
