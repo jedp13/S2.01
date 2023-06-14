@@ -19,9 +19,9 @@ namespace MatInfo
     /// <summary>
     /// Logique d'interaction pour CategorieMateriel.xaml
     /// </summary>
-    public partial class CategorieMaterielW : Window
+    public partial class WCategorieMateriel : Window
     {
-        public CategorieMaterielW()
+        public WCategorieMateriel()
         {
             InitializeComponent();
             lvCategorie.SelectedIndex = 0;
@@ -32,28 +32,28 @@ namespace MatInfo
         private void btCM_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
-            CategorieMaterielW categorieMateriel = new CategorieMaterielW();
+            WCategorieMateriel categorieMateriel = new WCategorieMateriel();
             categorieMateriel.ShowDialog();
         }
 
         private void btM_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
-            Materiel materiel = new Materiel();
+            WMateriel materiel = new WMateriel();
             materiel.ShowDialog();
         }
 
         private void btA_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
-            Attribution attribution = new Attribution();
+            WAttribution attribution = new WAttribution();
             attribution.ShowDialog();
         }
 
         private void btP_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
-            Personnel personnel = new Personnel();
+            WPersonnel personnel = new WPersonnel();
             personnel.ShowDialog();
         }
 

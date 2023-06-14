@@ -31,7 +31,7 @@ namespace MatInfo
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             
-            CategorieMaterielW categorieMateriel = new CategorieMaterielW();
+            WCategorieMateriel categorieMateriel = new WCategorieMateriel();
             categorieMateriel.ShowDialog();
             this.Close();
         }
@@ -39,7 +39,7 @@ namespace MatInfo
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
             
-            Materiel materiel = new Materiel();
+            WMateriel materiel = new WMateriel();
             materiel.ShowDialog();
             this.Close();
         }
@@ -47,7 +47,7 @@ namespace MatInfo
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
             
-            Attribution attribution = new Attribution();
+            WAttribution attribution = new WAttribution();
             attribution.ShowDialog();
             this.Close();
         }
@@ -55,7 +55,7 @@ namespace MatInfo
         private void Button_Click_3(object sender, RoutedEventArgs e)
         {
             
-            Personnel personnel = new Personnel();
+            WPersonnel personnel = new WPersonnel();
             personnel.ShowDialog();
             this.Close();
         }

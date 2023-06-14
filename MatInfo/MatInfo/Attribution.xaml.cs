@@ -17,9 +17,9 @@ namespace MatInfo
     /// <summary>
     /// Logique d'interaction pour Attribution.xaml
     /// </summary>
-    public partial class Attribution : Window
+    public partial class WAttribution : Window
     {
-        public Attribution()
+        public WAttribution()
         {
             InitializeComponent();
         }
@@ -28,7 +28,7 @@ namespace MatInfo
         {
             this.Close();
 
-            CategorieMaterielW categorieMateriel = new CategorieMaterielW();
+            WCategorieMateriel categorieMateriel = new WCategorieMateriel();
             categorieMateriel.ShowDialog();
             
         }
@@ -36,7 +36,7 @@ namespace MatInfo
         private void btM_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
-            Materiel materiel = new Materiel();
+            WMateriel materiel = new WMateriel();
             materiel.ShowDialog();
             
         }
@@ -44,7 +44,7 @@ namespace MatInfo
         private void btA_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
-            Attribution attribution = new Attribution();
+            WAttribution attribution = new WAttribution();
             attribution.ShowDialog();
             
         }
@@ -52,7 +52,7 @@ namespace MatInfo
         private void btP_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
-            Personnel personnel = new Personnel();
+            WPersonnel personnel = new WPersonnel();
             personnel.ShowDialog();
         }
 
