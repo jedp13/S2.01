@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MatInfo.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -22,6 +23,7 @@ namespace MatInfo
         public WMateriel()
         {
             InitializeComponent();
+            lvMateriel.SelectedIndex = 0;
         }
 
         private void btCM_Click(object sender, RoutedEventArgs e)
@@ -52,8 +54,48 @@ namespace MatInfo
             personnel.ShowDialog();
         }
 
-        
+        private void btCreer_Click(object sender, RoutedEventArgs e)
+        {
+            WindowCM_Materiel winAjoutMateriel = new WindowCM_Materiel(new Materiel(), Mode.Insert,this);
+          
 
-       
+            bool reponse = (bool)winAjoutMateriel.ShowDialog();
+            if (reponse == true && winAjoutMateriel.DataContext is Materiel)
+            {
+                Materiel m = (Materiel)winAjoutMateriel.DataContext;
+                m.Create();
+            }
+        }
+
+        private void btModifier_Click(object sender, RoutedEventArgs e)
+        {
+
+            WindowCM_Materiel winAjoutMateriel = new WindowCM_Materiel((Materiel)lvMateriel.SelectedItem, Mode.Update,this);
+            winAjoutMateriel.Owner = this;
+
+            bool reponse = (bool)winAjoutMateriel.ShowDialog();
+            if (reponse == true)
+            {
+                Materiel m = (Materiel)lvMateriel.SelectedItem; // (Materiel)winAjoutMateriel.DataContext;
+                m.Update();
+            }
+
+
+
+        }
+
+        private void btSupprimer_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBoxResult result = MessageBox.Show(" Vous êtes sur de vouloir suprimer " + ((Materiel)lvMateriel.SelectedItem).NomMateriel, "Supprimer", MessageBoxButton.YesNo, MessageBoxImage.Warning);
+
+            if (result == MessageBoxResult.Yes)
+            {
+                Materiel m= (Materiel)lvMateriel.SelectedItem;
+                m.Delete();
+                lvMateriel.SelectedIndex = 0;
+            }
+        }
+
+
     }
 }

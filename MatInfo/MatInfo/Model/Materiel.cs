@@ -5,6 +5,7 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace MatInfo.Model
 {
@@ -33,12 +34,16 @@ namespace MatInfo.Model
 
         public void Create()
         {
-            throw new NotImplementedException();
+            DataAccess accesBD = new DataAccess();
+            String requete = "insert into materiel( nommateriel, referenceconstructeurmateriel,codebarreinventaire,idcategorie)  values('" + this.NomMateriel + "','" + this.ReferenceConstructeur + "','" + this.CodeBarreInventaire + "','"+ this.UneCategorie.IdCategorie+"') ;";
+            DataTable datas = accesBD.GetData(requete);
         }
 
         public void Delete()
         {
-            throw new NotImplementedException();
+            DataAccess accesBD = new DataAccess();
+            String requete = "DELETE FROM materiel WHERE idmateriel='" + this.IdMateriel + "'";
+            DataTable datas = accesBD.GetData(requete);
         }
 
         public ObservableCollection<Materiel> FindAll()
@@ -70,7 +75,10 @@ namespace MatInfo.Model
 
         public void Update()
         {
-            throw new NotImplementedException();
+            DataAccess accesBD = new DataAccess();
+            String requete = $"Update materiel SET nommateriel='{this.NomMateriel}', idcategorie =" + this.UneCategorie.IdCategorie + ", codebarreinventaire ='" + this.CodeBarreInventaire + "', referenceconstructeurmateriel ='" + this.ReferenceConstructeur +"' "+  "where idmateriel=" + this.IdMateriel + "";
+            MessageBox.Show(requete);
+            DataTable datas = accesBD.GetData(requete);
         }
     }
 }

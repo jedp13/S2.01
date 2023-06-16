@@ -11,6 +11,7 @@
     Height="200"
     WindowStartupLocation="CenterOwner"
     mc:Ignorable="d">
+
     <Grid>
         <Label
             Margin="42,1,0,0"
@@ -72,12 +73,13 @@
             Content="Annuler"
             RenderTransformOrigin="0.516,1.756" />
         <ComboBox
+            x:Name="cbCategorie"
             Width="120"
             Margin="182,17,0,0"
             HorizontalAlignment="Left"
-            VerticalAlignment="Top"
-            DataContext="Model:ApplicationData"
-            Text="{Binding NomCategorie}" />
+            VerticalAlignment="Top" 
+            SelectedItem="{Binding UneCategorie}"
+            />
 
     </Grid>
 </Window>

@@ -30,10 +30,11 @@
             Margin="0,10,0,0"
             VerticalAlignment="Center"
             Orientation="Horizontal">
-            <ListView Height="323" Width="406" Margin="20,0,0,0" ItemsSource="{Binding Path=LesMateriaux}">
+            <ListView x:Name="lvMateriel" Height="323" Width="406" Margin="20,0,0,0" ItemsSource="{Binding Path=LesMateriaux}">
                 <ListView.View>
                     <GridView>
-                        <GridViewColumn Header="ID" DisplayMemberBinding="{Binding Path=IdMateriel}" />
+                        <GridViewColumn Header="IDMateriel" DisplayMemberBinding="{Binding Path=IdMateriel}" />
+                        <GridViewColumn Header="IDCatégorie" DisplayMemberBinding="{Binding Path=FK_IdCategorie}" />
                         <GridViewColumn Header="Nom" DisplayMemberBinding="{Binding Path=NomMateriel}" />
                         <GridViewColumn Header="Référence constructeur" DisplayMemberBinding="{Binding Path=ReferenceConstructeur}" />
                         <GridViewColumn Header="Codebarre Inventaire" DisplayMemberBinding="{Binding Path=CodeBarreInventaire}" />
@@ -42,22 +43,22 @@
                 </ListView.View>
             </ListView>
             <StackPanel Width="307">
-                <Button
+                <Button x:Name="btCreer"
                     Width="252"
                     Height="40"
                     Margin="40,30,0,0"
                     HorizontalAlignment="Center"
-                    Content="Créer" />
-                <Button
+                    Content="Créer" Click="btCreer_Click" />
+                <Button x:Name="btModifier"
                     Width="252"
                     Height="40"
                     Margin="40,30,0,0"
-                    Content="Modifier" />
-                <Button
+                    Content="Modifier" Click="btModifier_Click"/>
+                <Button x:Name="btSupprimer"
                     Width="252"
                     Height="40"
                     Margin="40,30,0,0"
-                    Content="Supprimer" />
+                    Content="Supprimer" Click="btSupprimer_Click"/>
                 
             </StackPanel>
 

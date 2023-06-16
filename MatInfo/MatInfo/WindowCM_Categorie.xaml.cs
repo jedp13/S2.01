@@ -45,7 +45,6 @@ namespace MatInfo
             else
             {
                 // on doit déclencher la mise à jour du binding
-                this.tbCategorie.GetBindingExpression(TextBox.TextProperty).UpdateSource();
                 if (Validation.GetHasError((DependencyObject)tbCategorie))
                     MessageBox.Show(this.Owner, "Pas possible!", "Pb", MessageBoxButton.OK, MessageBoxImage.Error);
                 else

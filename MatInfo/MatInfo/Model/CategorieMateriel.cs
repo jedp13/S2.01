@@ -73,5 +73,10 @@ namespace MatInfo.Model
             String requete = "Update categorie_materiel SET nomcategorie='"+this.NomCategorie+"' where idcategorie='"+this.IdCategorie+"'" ;
             DataTable datas = accesBD.GetData(requete);
         }
+
+        public override string? ToString()
+        {
+            return this.IdCategorie+" - "+this.NomCategorie ;
+        }
     }
 }

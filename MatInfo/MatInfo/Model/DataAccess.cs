@@ -118,8 +118,9 @@ namespace MatInfo.Model /// A MODIFIER SI VOTRE PROJET A UN AUTRE NOM
               else
                   return 0;
           }
-          catch 
+          catch (Exception e)
           {
+                MessageBox.Show(e.ToString());
                 
                 CloseConnection();
                 return 0;

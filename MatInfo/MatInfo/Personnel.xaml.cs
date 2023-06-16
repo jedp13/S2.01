@@ -64,6 +64,7 @@ namespace MatInfo
             if (reponse == true && winAjoutPersonnel.DataContext is Personnel)
             {
                 Personnel p = (Personnel)winAjoutPersonnel.DataContext;
+                applicationData.LesPersonnels.Insert(0, p);
                 p.Create();
             }
         }
@@ -89,6 +90,7 @@ namespace MatInfo
             {
                 Personnel p = (Personnel)lvPersonnel.SelectedItem;
                 p.Delete();
+                applicationData.LesPersonnels.Remove(p);
                 lvPersonnel.SelectedIndex = 0;
             }
         }

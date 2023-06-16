@@ -45,10 +45,7 @@ namespace MatInfo
             else
             {
                 // on doit déclencher la mise à jour du binding
-                this.tbPrenomPerso.GetBindingExpression(TextBox.TextProperty).UpdateSource();
-                this.tbNomPerso.GetBindingExpression(TextBox.TextProperty).UpdateSource();
-                this.tbMailPerso.GetBindingExpression(TextBox.TextProperty).UpdateSource();
-
+                
 
                 if (Validation.GetHasError((DependencyObject)tbPrenomPerso) || Validation.GetHasError((DependencyObject)tbNomPerso) || Validation.GetHasError((DependencyObject)tbMailPerso))
                     MessageBox.Show(this.Owner, "Pas possible!", "Pb", MessageBoxButton.OK, MessageBoxImage.Error);
