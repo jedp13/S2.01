@@ -34,7 +34,7 @@ namespace MatInfo.Model /// A MODIFIER SI VOTRE PROJET A UN AUTRE NOM
                 {
                     ConnectionString = "Server=srv-peda-new;port=5433;Database=bd_s201;Search Path=bds201;uid=purdyj;password=Md4Kqe;" // A MODIFIER POUR VOTR BD
                 };
-              NpgSQLConnect.Open();
+                NpgSQLConnect.Open();
                 
                 return NpgSQLConnect.State.Equals(System.Data.ConnectionState.Open);
           }
