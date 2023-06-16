@@ -67,6 +67,7 @@ namespace MatInfo
             {
                 CategorieMateriel c = (CategorieMateriel)winAjoutCategorie.DataContext;
                 c.Create();
+                applicationData.LesCategories.Insert(applicationData.LesPersonnels.Count+1, c);
             }
         }
 
@@ -95,6 +96,7 @@ namespace MatInfo
             {
                 CategorieMateriel c = (CategorieMateriel)lvCategorie.SelectedItem;
                 c.Delete();
+                applicationData.LesCategories.Remove(c);
                 lvCategorie.SelectedIndex = 0;
             }
         }

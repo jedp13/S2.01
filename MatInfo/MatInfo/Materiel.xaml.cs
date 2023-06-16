@@ -64,6 +64,7 @@ namespace MatInfo
             {
                 Materiel m = (Materiel)winAjoutMateriel.DataContext;
                 m.Create();
+                applicationData.LesMateriaux.Insert(applicationData.LesMateriaux.Count + 1, m);
             }
         }
 
@@ -92,6 +93,7 @@ namespace MatInfo
             {
                 Materiel m= (Materiel)lvMateriel.SelectedItem;
                 m.Delete();
+                applicationData.LesMateriaux.Remove(m);
                 lvMateriel.SelectedIndex = 0;
             }
         }

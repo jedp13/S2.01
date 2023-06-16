@@ -34,7 +34,7 @@
                 </ListView.View>
             </ListView>
             <StackPanel Width="307">
-                <Button Content="Créer" Width="252" Height="40" Margin="40,30,0,0" HorizontalAlignment="Center" />
+                <Button Content="Créer" Width="252" Height="40" Margin="40,30,0,0" HorizontalAlignment="Center" Click="Creer_Click" />
                 <Button Content="Modifier" Width="252" Height="40" Margin="40,30,0,0"/>
                 <Button Content="Supprimer" Width="252" Height="40" Margin="40,30,0,0"/>
                 

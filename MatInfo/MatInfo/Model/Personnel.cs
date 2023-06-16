@@ -31,14 +31,17 @@ namespace MatInfo.Model
         {
             DataAccess accesBD = new DataAccess();
             String requete = "insert into personnel( emailpersonnel, nompersonnel,prenompersonnel)  values('"+this.EmailPersonnel+"','"+this.NomPersonnel+"','"+this.PrenomPersonnel+"') ;";
-            DataTable datas = accesBD.GetData(requete);
+            accesBD.SetData(requete);
+            requete = "select idpersonnel from personnel where emailpersonnel = '"+this.EmailPersonnel+"'";
+            this.IdPersonnel = int.Parse(accesBD.GetData(requete).Rows[0]["idpersonnel"].ToString());
+
         }
 
         public void Delete()
         {
             DataAccess accesBD = new DataAccess();
             String requete = "DELETE FROM personnel WHERE idpersonnel='" + this.IdPersonnel + "'";
-            DataTable datas = accesBD.GetData(requete);
+            accesBD.SetData(requete);
 
         }
 
@@ -73,7 +76,12 @@ namespace MatInfo.Model
         {
             DataAccess accesBD = new DataAccess();
             String requete = "Update personnel SET nompersonnel='" + this.NomPersonnel + "', prenompersonnel ='"+this.PrenomPersonnel+ "', emailpersonnel ='"+this.EmailPersonnel+"' where idpersonnel='" + this.IdPersonnel + "'";
-            DataTable datas = accesBD.GetData(requete);
+            accesBD.SetData(requete);
+        }
+
+        public override string? ToString()
+        {
+            return this.IdPersonnel+" - "+ this.PrenomPersonnel + " "+this.NomPersonnel;
         }
     }
 }

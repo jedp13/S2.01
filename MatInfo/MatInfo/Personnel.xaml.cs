@@ -64,8 +64,9 @@ namespace MatInfo
             if (reponse == true && winAjoutPersonnel.DataContext is Personnel)
             {
                 Personnel p = (Personnel)winAjoutPersonnel.DataContext;
-                applicationData.LesPersonnels.Insert(0, p);
                 p.Create();
+                applicationData.LesPersonnels.Insert(applicationData.LesPersonnels.Count+1, p);
+
             }
         }
 

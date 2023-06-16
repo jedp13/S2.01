@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MatInfo.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -58,7 +59,16 @@ namespace MatInfo
 
         private void Creer_Click(object sender, RoutedEventArgs e)
         {
+            WindowCM_Attribution winAjoutAttribution = new WindowCM_Attribution(new EstAttribue(), Mode.Insert, this);
 
+
+            bool reponse = (bool)winAjoutAttribution.ShowDialog();
+            if (reponse == true && winAjoutAttribution.DataContext is EstAttribue)
+            {
+                EstAttribue a = (EstAttribue)winAjoutAttribution.DataContext;
+                a.Create();
+                applicationData.LesAttributions.Insert(applicationData.LesAttributions.Count + 1, a);
+            }
         }
     }
 }

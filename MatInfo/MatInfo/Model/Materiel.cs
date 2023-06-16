@@ -36,14 +36,16 @@ namespace MatInfo.Model
         {
             DataAccess accesBD = new DataAccess();
             String requete = "insert into materiel( nommateriel, referenceconstructeurmateriel,codebarreinventaire,idcategorie)  values('" + this.NomMateriel + "','" + this.ReferenceConstructeur + "','" + this.CodeBarreInventaire + "','"+ this.UneCategorie.IdCategorie+"') ;";
-            DataTable datas = accesBD.GetData(requete);
+            accesBD.SetData(requete);
+            requete = "select idmateriel from materiel where codebarreinventaire = '" + this.CodeBarreInventaire + "'";
+            this.IdMateriel = int.Parse(accesBD.GetData(requete).Rows[0]["idmateriel"].ToString());
         }
 
         public void Delete()
         {
             DataAccess accesBD = new DataAccess();
             String requete = "DELETE FROM materiel WHERE idmateriel='" + this.IdMateriel + "'";
-            DataTable datas = accesBD.GetData(requete);
+            accesBD.SetData(requete);
         }
 
         public ObservableCollection<Materiel> FindAll()
@@ -78,7 +80,12 @@ namespace MatInfo.Model
             DataAccess accesBD = new DataAccess();
             String requete = $"Update materiel SET nommateriel='{this.NomMateriel}', idcategorie =" + this.UneCategorie.IdCategorie + ", codebarreinventaire ='" + this.CodeBarreInventaire + "', referenceconstructeurmateriel ='" + this.ReferenceConstructeur +"' "+  "where idmateriel=" + this.IdMateriel + "";
             MessageBox.Show(requete);
-            DataTable datas = accesBD.GetData(requete);
+            accesBD.SetData(requete);
+        }
+
+        public override string? ToString()
+        {
+            return this.IdMateriel+" - "+this.NomMateriel;
         }
     }
 }
