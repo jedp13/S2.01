@@ -22,7 +22,7 @@
         <Label HorizontalAlignment="Left" Content="Liste des attributions" Margin="20,0,0,0" />
 
         <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="0,10,0,0">
-            <ListView Height="321" Width="406" Margin="20,0,0,0" ItemsSource="{Binding Path=LesAttributions}">
+            <ListView x:Name="lvAttribution" Height="321" Width="406" Margin="20,0,0,0" ItemsSource="{Binding Path=LesAttributions}">
                 <ListView.View>
                     <GridView>
                         <GridViewColumn Header="ID Personnel " DisplayMemberBinding="{Binding Path=IdPersonnel}" />

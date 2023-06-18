@@ -30,9 +30,9 @@ namespace MatInfo.Model
         public void Create()
         {
             DataAccess accesBD = new DataAccess();
-            String requete = "insert into personnel( emailpersonnel, nompersonnel,prenompersonnel)  values('"+this.EmailPersonnel+"','"+this.NomPersonnel+"','"+this.PrenomPersonnel+"') ;";
+            String requete = $"insert into personnel( emailpersonnel, nompersonnel,prenompersonnel)  values('{this.EmailPersonnel}','{this.NomPersonnel}','{this.PrenomPersonnel}') ;";
             accesBD.SetData(requete);
-            requete = "select idpersonnel from personnel where emailpersonnel = '"+this.EmailPersonnel+"'";
+            requete = $"select idpersonnel from personnel where emailpersonnel = '{this.EmailPersonnel}'";
             this.IdPersonnel = int.Parse(accesBD.GetData(requete).Rows[0]["idpersonnel"].ToString());
 
         }
@@ -40,7 +40,7 @@ namespace MatInfo.Model
         public void Delete()
         {
             DataAccess accesBD = new DataAccess();
-            String requete = "DELETE FROM personnel WHERE idpersonnel='" + this.IdPersonnel + "'";
+            String requete = $"DELETE FROM personnel WHERE idpersonnel='{ this.IdPersonnel}'";
             accesBD.SetData(requete);
 
         }
@@ -75,7 +75,7 @@ namespace MatInfo.Model
         public void Update()
         {
             DataAccess accesBD = new DataAccess();
-            String requete = "Update personnel SET nompersonnel='" + this.NomPersonnel + "', prenompersonnel ='"+this.PrenomPersonnel+ "', emailpersonnel ='"+this.EmailPersonnel+"' where idpersonnel='" + this.IdPersonnel + "'";
+            String requete = $"Update personnel SET nompersonnel='{ this.NomPersonnel}', prenompersonnel ='{this.PrenomPersonnel}', emailpersonnel ='{this.EmailPersonnel}' where idpersonnel='{ this.IdPersonnel}'";
             accesBD.SetData(requete);
         }
 

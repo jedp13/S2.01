@@ -72,5 +72,7 @@ namespace MatInfo
         {
             DialogResult = false; // ferme automatiquement la fenêtre      
         }
+
+
     }
 }

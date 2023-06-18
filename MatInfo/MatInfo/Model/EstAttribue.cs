@@ -1,10 +1,11 @@
-﻿using System;
+﻿ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace MatInfo.Model
 {
@@ -27,12 +28,18 @@ namespace MatInfo.Model
         public Personnel UnPersonnel { get; set; }
         public void Create()
         {
-            throw new NotImplementedException();
+            DataAccess accesBD = new DataAccess();
+            String requete = $"insert into est_attribue( idpersonnel, idmateriel,dateattribution,commentaireattribution)  values({ this.UnPersonnel.IdPersonnel},{ this.UnMateriel.IdMateriel},'{ this.DateAttribution}','{ this.CommentaireAttribution}') ;";
+            accesBD.SetData(requete);
+
+
         }
 
         public void Delete()
         {
-            throw new NotImplementedException();
+            DataAccess accesBD = new DataAccess();
+            String requete = $"DELETE FROM est_attribue where idmateriel= {this.UnMateriel.IdMateriel} and dateattribution ='{this.DateAttribution}' and idpersonnel={this.UnPersonnel.IdPersonnel}";
+            accesBD.SetData(requete);
         }
 
         public ObservableCollection<EstAttribue> FindAll()
@@ -64,7 +71,9 @@ namespace MatInfo.Model
 
         public void Update()
         {
-            throw new NotImplementedException();
+            DataAccess accesBD = new DataAccess();
+            String requete = $"Update materiel SET idpersonnel={this.UnPersonnel.IdPersonnel}, idmateriel ={this.UnMateriel.IdMateriel}, dateattribution ='{this.DateAttribution}', commentaireattribution ='{this.CommentaireAttribution}' where idmateriel= {this.UnMateriel.IdMateriel} and dateattribution ='{this.DateAttribution}' and idpersonnel={this.UnPersonnel.IdPersonnel} ";
+            accesBD.SetData(requete);
         }
     }
 }

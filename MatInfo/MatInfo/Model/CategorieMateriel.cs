@@ -28,16 +28,16 @@ namespace MatInfo.Model
         public void Create()
         {
             DataAccess accesBD = new DataAccess();
-            String requete = "insert into categorie_materiel(nomcategorie) values ('"+this.NomCategorie+"');";
+            String requete = $"insert into categorie_materiel(nomcategorie) values ('{this.NomCategorie}');";
             accesBD.SetData(requete);
-            requete = "select idcategorie from categorie_materiel where nomcategorie = '" + this.NomCategorie + "'";
+            requete = $"select idcategorie from categorie_materiel where nomcategorie = '{ this.NomCategorie}'";
             this.IdCategorie = int.Parse(accesBD.GetData(requete).Rows[0]["idcategorie"].ToString());
         }
 
         public void Delete()
         {
             DataAccess accesBD = new DataAccess();
-            String requete = "DELETE FROM categorie_materiel WHERE idcategorie='"+this.IdCategorie+"'";
+            String requete = $"DELETE FROM categorie_materiel WHERE idcategorie='{this.IdCategorie}'";
             DataTable datas = accesBD.GetData(requete);
             
         }
@@ -72,7 +72,7 @@ namespace MatInfo.Model
         public void Update()
         {
             DataAccess accesBD = new DataAccess();
-            String requete = "Update categorie_materiel SET nomcategorie='"+this.NomCategorie+"' where idcategorie='"+this.IdCategorie+"'" ;
+            String requete = $"Update categorie_materiel SET nomcategorie='{this.NomCategorie}' where idcategorie='{this.IdCategorie}'" ;
             DataTable datas = accesBD.GetData(requete);
         }
 

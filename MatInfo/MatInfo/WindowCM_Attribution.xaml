@@ -12,8 +12,11 @@
         <Label Content="Materiel : " HorizontalAlignment="Left" Margin="10,33,0,0" VerticalAlignment="Top"/>
         <Label Content="Personnel : " HorizontalAlignment="Left" Margin="273,33,0,0" VerticalAlignment="Top"/>
         <DatePicker x:Name="dpDate" HorizontalAlignment="Center" Margin="0,103,0,0" VerticalAlignment="Top" Height="52" Width="226"/>
-        <Button x:Name="btCreer" Content="Ajouter" Click="BtCreer_Click" HorizontalAlignment="Left" Margin="181,197,0,0" VerticalAlignment="Top" Width="64"/>
-        <Button x:Name="btAnnuler" Content="Annuler" Click="BtAnnuler_Click" HorizontalAlignment="Left" Margin="250,197,0,0" VerticalAlignment="Top" Width="64"/>
+        <Button x:Name="btCreer" Content="Ajouter" Click="BtCreer_Click" HorizontalAlignment="Left" Margin="175,236,0,0" VerticalAlignment="Top" Width="64"/>
+        <Button x:Name="btAnnuler" Content="Annuler" Click="BtAnnuler_Click" HorizontalAlignment="Left" Margin="250,236,0,0" VerticalAlignment="Top" Width="64"/>
+
+        <TextBox x:Name="tbCommentaire" TextWrapping="Wrap" Text="{Binding CommentaireAttribution, ValidatesOnExceptions=True}" Width="120" Margin="194,204,186,64"  />
+        <Label Content="Commentaire : " HorizontalAlignment="Left" Margin="194,178,0,0" VerticalAlignment="Top"/>
 
     </Grid>
 </Window>

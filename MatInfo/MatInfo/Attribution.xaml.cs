@@ -23,6 +23,7 @@ namespace MatInfo
         public WAttribution()
         {
             InitializeComponent();
+            lvAttribution.SelectedIndex = 0;
         }
 
         private void btCM_Click(object sender, RoutedEventArgs e)

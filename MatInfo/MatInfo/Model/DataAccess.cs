@@ -32,7 +32,7 @@ namespace MatInfo.Model /// A MODIFIER SI VOTRE PROJET A UN AUTRE NOM
           {
                 NpgSQLConnect = new NpgsqlConnection
                 {
-                    ConnectionString = "Server=srv-peda-new;port=5433;Database=bd_s201;Search Path=bds201;uid=purdyj;password=Md4Kqe;" // A MODIFIER POUR VOTR BD
+                    ConnectionString = "Server=srv-peda-new;port=5432;Database=bd_s201;Search Path=bds201;uid=purjed;password=Md4Kqe;" // A MODIFIER POUR VOTR BD
                 };
                 NpgSQLConnect.Open();
                 
