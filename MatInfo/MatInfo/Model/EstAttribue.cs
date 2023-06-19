@@ -108,7 +108,22 @@ namespace MatInfo.Model
 
         public ObservableCollection<EstAttribue> FindBySelection(string criteres)
         {
-            throw new NotImplementedException();
+            ObservableCollection<EstAttribue> lesAttributions = new ObservableCollection<EstAttribue>();
+            DataAccess accesBD = new DataAccess();
+            String requete = $"select * from est_attribue {criteres};";
+            DataTable datas = accesBD.GetData(requete);
+            if (datas != null)
+            {
+                foreach (DataRow row in datas.Rows)
+                {
+                    EstAttribue e = new EstAttribue(int.Parse(row["idpersonnel"].ToString()), int.Parse(row["idmateriel"].ToString()), (DateTime)row["dateattribution"], (String)row["commentaireattribution"]);
+                    lesAttributions.Add(e);
+                    e.UnMateriel= new Materiel(int.Parse(row["idmateriel"].ToString()), int.Parse(row["idcategorie"].ToString()), (String)row["nommateriel"], (String)row["referenceconstructeurmateriel"], (String)row["codebarreinventaire"]);
+                    e.unPersonnel = new Personnel(int.Parse(row["idpersonnel"].ToString()), (String)row["emailpersonnel"], (String)row["nompersonnel"], (String)row["prenompersonnel"]);
+                    e.unMateriel.UneCategorie = new CategorieMateriel(int.Parse(row["idcategorie"].ToString()), (String)row["nomcategorie"]);
+                }
+            }
+            return lesAttributions;
         }
 
         public void Read()

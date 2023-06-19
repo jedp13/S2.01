@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using MatInfo;
+using MatInfo.Model;
 
 namespace MatInfo
 {
@@ -25,11 +26,11 @@ namespace MatInfo
     {
         public MainWindow()
         {
+            
             InitializeComponent();
-            seConnecter connecter = new seConnecter();
-            connecter.ShowDialog();
-            lv
-            rbTout.
+            //seConnecter connecter = new seConnecter();
+            //connecter.ShowDialog();
+            
         }
 
 
@@ -37,37 +38,41 @@ namespace MatInfo
         private void miAcceuil_Click(object sender, RoutedEventArgs e)
         {
             MainWindow mainwindow = new MainWindow();
-            mainwindow.ShowDialog();
-            this.Close();
 
+            this.Close();
+            mainwindow.ShowDialog();
         }
 
         private void miCategorie_Click(object sender, RoutedEventArgs e)
         {
             WCategorieMateriel categorieMateriel = new WCategorieMateriel();
-            categorieMateriel.ShowDialog();
+
             this.Close();
+            categorieMateriel.ShowDialog();
         }
 
         private void miPersonnel_Click(object sender, RoutedEventArgs e)
         {
             WPersonnel personnel = new WPersonnel();
-            personnel.ShowDialog();
+
             this.Close();
+            personnel.ShowDialog();
         }
 
         private void miMateriel_Click(object sender, RoutedEventArgs e)
         {
             WMateriel materiel = new WMateriel();
-            materiel.ShowDialog();
+
             this.Close();
+            materiel.ShowDialog();
         }
 
         private void miAttribution_Click(object sender, RoutedEventArgs e)
         {
             WAttribution attribution = new WAttribution();
-            attribution.ShowDialog();
+
             this.Close();
+            attribution.ShowDialog();
         }
 
         private void miQuitter_Click(object sender, RoutedEventArgs e)
@@ -75,6 +80,37 @@ namespace MatInfo
             this.Close();
         }
 
+        private void SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            string requete = $" join personnel p on est_attribue.idpersonnel = p.idpersonnel join materiel m on est_attribue.idmateriel = m.idmateriel join categorie_materiel c on m.idcategorie = c.idcategorie";
+            if (lvCategorie.SelectedIndex != -1)
+            {
+                lvMateriaux.ItemsSource = ((CategorieMateriel)lvCategorie.SelectedItem).LesMateriaux;
+                lvMateriaux.Items.Refresh();
 
+                if (lvMateriaux.SelectedIndex != -1)
+                    requete = $" join personnel p on est_attribue.idpersonnel = p.idpersonnel join materiel m on est_attribue.idmateriel = m.idmateriel join categorie_materiel c on m.idcategorie = c.idcategorie where est_attribue.idmateriel = {((Materiel)lvMateriaux.SelectedItem).IdMateriel}";
+
+            }
+            if (lvPersonnel.SelectedIndex != -1)
+            {
+                requete = $" join personnel p on est_attribue.idpersonnel = p.idpersonnel join materiel m on est_attribue.idmateriel = m.idmateriel join categorie_materiel c on m.idcategorie = c.idcategorie where est_attribue.idpersonnel = {((Personnel)lvPersonnel.SelectedItem).IdPersonnel} ";
+                 if (lvMateriaux.SelectedIndex != -1)
+                    requete = $" join personnel p on est_attribue.idpersonnel = p.idpersonnel join materiel m on est_attribue.idmateriel = m.idmateriel join categorie_materiel c on m.idcategorie = c.idcategorie where est_attribue.idpersonnel = {((Personnel)lvPersonnel.SelectedItem).IdPersonnel} and est_attribue.idmateriel = {((Materiel)lvMateriaux.SelectedItem).IdMateriel}";
+            }
+            EstAttribue a = new EstAttribue();
+            lvAttributions.ItemsSource = a.FindBySelection(requete);
+            lvAttributions.Items.Refresh();
+        }
+
+        private void MenuItem_Click(object sender, RoutedEventArgs e)
+        {
+
+            lvCategorie.SelectedIndex = -1;
+            lvMateriaux.SelectedIndex = -1;
+            lvPersonnel.SelectedIndex = -1;
+            lvAttributions.ItemsSource = applicationData.LesAttributions;
+            lvMateriaux.ItemsSource = applicationData.LesMateriaux;
+        }
     }
 }

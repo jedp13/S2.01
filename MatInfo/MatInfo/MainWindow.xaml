@@ -57,85 +57,42 @@
                     Click="miQuitter_Click"
                     Header="_Quitter" />
             </MenuItem>
-            <MenuItem Header="_A propos" />
+            <MenuItem Header="_Refresh" Click="MenuItem_Click" />
         </Menu>
-        <ListView Grid.Row="1" ItemsSource="{Binding}">
+        <ListView x:Name="lvAttributions" Grid.Row="1" ItemsSource="{Binding LesAttributions}">
             <ListView.View>
-                <GridView>
-                    <GridViewColumn />
+                <GridView> 
+                    <GridViewColumn Header="Nom " DisplayMemberBinding="{Binding UnPersonnel.NomPersonnel}" />
+                    <GridViewColumn Header="Prenom " DisplayMemberBinding="{Binding UnPersonnel.PrenomPersonnel}" />
+                    <GridViewColumn Header="Catégorie " DisplayMemberBinding="{Binding UnMateriel.UneCategorie.NomCategorie}" />
+                    <GridViewColumn Header="Matériel " DisplayMemberBinding="{Binding UnMateriel.NomMateriel}" />
+                    <GridViewColumn Header="Date " DisplayMemberBinding="{Binding DateAttribution, StringFormat='dd/MM/yyyy'}" />
+
+
                 </GridView>
             </ListView.View>
         </ListView>
-        <RadioButton
-            x:Name="rbMatriaux"
-            Grid.Row="1"
-            Grid.Column="1"
-            Margin="8,87,0,0"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Top"
-            Content="Filtrer matériel par catégorie" />
-        <RadioButton
-            x:Name="rbAttributions"
-            Grid.Row="1"
-            Grid.Column="1"
-            Margin="8,202,0,0"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Top"
-            Content="Filtrer attributions par matériel et personnel" />
-        <RadioButton
-            x:Name="rbTout"
-            Grid.Row="1"
-            Grid.Column="1"
-            Margin="8,24,0,0"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Top"
-            Content="Tout Afficher" />
-
-        <ComboBox x:Name="cbCategorie"
-            Grid.Row="1"
-            Grid.Column="1"
-            Width="120"
-            Margin="51,143,0,0"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Top"
-            ItemsSource="{Binding LesCategories}" />
-        <ComboBox x:Name="cbMateriel"
-            Grid.Row="1"
-            Grid.Column="1"
-            Width="120"
-            Margin="51,253,0,0"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Top" 
-            ItemsSource="{Binding LesMateriaux}" />
-        <ComboBox x:Name="cbPersonne"
-            Grid.Row="1"
-            Grid.Column="1"
-            Width="120"
-            Margin="51,318,0,0"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Top"
-            ItemsSource="{Binding LesPersonnels}"/>
-        <Label
-            Grid.Row="1"
-            Grid.Column="1"
-            Margin="51,118,0,0"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Top"
-            Content="Catégorie : " />
-        <Label
-            Grid.Row="1"
-            Grid.Column="1"
-            Margin="51,227,0,0"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Top"
-            Content="Materiel : " />
-        <Label
-            Grid.Row="1"
-            Grid.Column="1"
-            Margin="51,292,0,0"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Top"
-            Content="Personnel : " />
+        <ListView x:Name="lvCategorie" Grid.Column="1" Grid.Row="1" ItemsSource="{Binding LesCategories}" Margin="0,0,0,250" SelectionChanged="SelectionChanged" >
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Catégorie" />
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <ListView x:Name="lvMateriaux" Grid.Column="1" Grid.Row="1" ItemsSource="{Binding LesMateriaux}" Margin="0,130,0,130" SelectionChanged="SelectionChanged" >
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Matériel" />
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <ListView x:Name="lvPersonnel" Grid.Column="1" Grid.Row="1" ItemsSource="{Binding LesPersonnels}" Margin="0,260,0,0" SelectionChanged="SelectionChanged" >
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Personnel" />
+                </GridView>
+            </ListView.View>
+        </ListView>
     </Grid>
 
 

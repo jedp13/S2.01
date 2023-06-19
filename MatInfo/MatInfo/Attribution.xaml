@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:MatInfo"
                     xmlns:model="clr-namespace:MatInfo.Model"
         mc:Ignorable="d"
-        Title="Attribution" Height="450" Width="800" WindowStartupLocation="CenterScreen">
+        Title="Attribution" Height="450" Width="800" WindowStartupLocation="CenterScreen" MinWidth="600" MinHeight="300">
     <Window.DataContext>
         <model:ApplicationData x:Name="applicationData" />
     </Window.DataContext>
@@ -33,46 +33,47 @@
             <MenuItem Header="_A propos"/>
         </Menu>
 
-            <ListView x:Name="lvAttribution" Grid.Row="1" Grid.Column="0" Height="321" Width="406" Margin="20,0,0,0" ItemsSource="{Binding Path=LesAttributions}">
-                <ListView.View>
-                    <GridView>
-                        <GridViewColumn Header="Nom " DisplayMemberBinding="{Binding Path=UnPersonnel.NomPersonnel}" />
-                        <GridViewColumn Header="Prenom " DisplayMemberBinding="{Binding Path=UnPersonnel.PrenomPersonnel}" />
-                        <GridViewColumn Header="Matériel" DisplayMemberBinding="{Binding Path=UnMateriel.NomMateriel}" />
-                        <GridViewColumn Header="Date" DisplayMemberBinding="{Binding Path=DateAttribution, StringFormat='dd/MM/yyyy'}" />
-                        <GridViewColumn Header="Commentaire" DisplayMemberBinding="{Binding Path=CommentaireAttribution}" />
+        <ListView x:Name="lvAttribution" Grid.Row="1" Grid.Column="0" Margin="10,10,10,10" ItemsSource="{Binding Path=LesAttributions}">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Nom " DisplayMemberBinding="{Binding Path=UnPersonnel.NomPersonnel}" />
+                    <GridViewColumn Header="Prenom " DisplayMemberBinding="{Binding Path=UnPersonnel.PrenomPersonnel}" />
+                    <GridViewColumn Header="Matériel" DisplayMemberBinding="{Binding Path=UnMateriel.NomMateriel}" />
+                    <GridViewColumn Header="Date" DisplayMemberBinding="{Binding Path=DateAttribution, StringFormat='dd/MM/yyyy'}" />
+                    <GridViewColumn Header="Commentaire" DisplayMemberBinding="{Binding Path=CommentaireAttribution}" />
 
-                    </GridView>
-                </ListView.View>
-            </ListView>
+                </GridView>
+            </ListView.View>
+        </ListView>
 
         <StackPanel
-            Grid.Row="1"
             Grid.Column="1"
-            Margin="0,10,0,0"
-            VerticalAlignment="Center"
-            Orientation="Horizontal">
+            Margin="23,-2,-23,0"
+            VerticalAlignment="Top"
+            Orientation="Horizontal" Grid.RowSpan="2">
             <StackPanel Width="307">
                 <Button
                     x:Name="btCreer"
                     Width="252"
                     Height="40"
-                    Margin="40,30,0,0"
-                    HorizontalAlignment="Center"
+                    Margin="0,30,0,0"
+                    HorizontalAlignment="Left"
                     Content="Créer" Click="btCreer_Click" />
                 <Button
                                         x:Name="btModifier"
 
                     Width="252"
                     Height="40"
-                    Margin="40,30,0,0"
+                    Margin="0,30,0,0"
+                     HorizontalAlignment="Left"
                     Content="Modifier" Click="btModifier_Click" />
                 <Button
                                         x:Name="btSupprimer"
 
                     Width="252"
                     Height="40"
-                    Margin="40,30,0,0"
+                    Margin="0,30,0,0"
+                     HorizontalAlignment="Left"
                     Content="Supprimer" Click="btSupprimer_Click" />
 
             </StackPanel>
@@ -84,5 +85,5 @@
 
 
 
-   
+
 </Window>

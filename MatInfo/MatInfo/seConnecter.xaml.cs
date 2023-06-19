@@ -26,7 +26,10 @@ namespace MatInfo
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+            MainWindow mainwindow = new MainWindow();
+
             this.Close();
+            mainwindow.ShowDialog();
         }
     }
 }

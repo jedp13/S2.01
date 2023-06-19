@@ -7,66 +7,66 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:model="clr-namespace:MatInfo.Model"
     Title="WindowCM_Materiel"
-    Width="300"
+    Width="400"
     Height="200"
     WindowStartupLocation="CenterOwner"
-    mc:Ignorable="d">
+    mc:Ignorable="d" MinWidth="200" MinHeight="200" MaxWidth="400" MaxHeight="400">
 
     <Grid>
         <Label
-            Margin="42,1,0,0"
+            Margin="48,11,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
             Content="Nom du matériel : " />
         <TextBox
             x:Name="tbNomMat"
             Width="168"
-            Margin="0,21,0,0"
+            Margin="23,31,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
             Text="{Binding NomMateriel, ValidatesOnExceptions=True}"
             TextWrapping="Wrap" />
         <Label
-            Margin="25,41,0,0"
+            Margin="48,82,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
             Content="Reférence Constructeur : " />
         <TextBox
             x:Name="tbRefMat"
             Width="168"
-            Margin="0,61,0,0"
+            Margin="23,102,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
             Text="{Binding ReferenceConstructeur, ValidatesOnExceptions=True}"
             TextWrapping="Wrap" />
         <Label
-            Margin="29,81,0,0"
+            Margin="222,0,0,0"
             HorizontalAlignment="Left"
-            VerticalAlignment="Top"
+            VerticalAlignment="Center"
             Content="Code barre inventaire : " />
         <TextBox
             x:Name="tbCodeBarMat"
             Width="168"
-            Margin="0,106,0,0"
+            Margin="205,104,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
-            RenderTransformOrigin="0.065,1.138"
             Text="{Binding CodeBarreInventaire, ValidatesOnExceptions=True}"
-            TextWrapping="Wrap" />
+            TextWrapping="Wrap" Height="17" />
 
         <Button
             x:Name="btCreer"
             Width="64"
-            Margin="86,147,0,0"
+            Margin="141,135,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
             Click="BtCreer_Click"
             Content="Ajouter"
+             IsDefault="True"
             RenderTransformOrigin="0.539,1.655" />
         <Button
             x:Name="btAnnuler"
             Width="64"
-            Margin="150,147,0,0"
+            Margin="205,135,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
             Click="BtAnnuler_Click"
@@ -75,11 +75,12 @@
         <ComboBox
             x:Name="cbCategorie"
             Width="120"
-            Margin="182,17,0,0"
+            Margin="223,31,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top" 
             SelectedItem="{Binding UneCategorie, ValidatesOnExceptions=True}"
             />
+        <Label Content="Catégorie :" HorizontalAlignment="Left" Margin="248,10,0,0" VerticalAlignment="Top"/>
 
     </Grid>
 </Window>

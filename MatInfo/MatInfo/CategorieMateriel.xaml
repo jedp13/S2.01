@@ -8,14 +8,12 @@
     xmlns:model="clr-namespace:MatInfo.Model"
     x:Name="wdwCategorieMateriel"
     Title="CategorieMateriel"
-    Width="800"
-    Height="450"
-    WindowStartupLocation="CenterScreen"
+Height="450" Width="800" WindowStartupLocation="CenterScreen" MinWidth="600" MinHeight="300"
     mc:Ignorable="d">
     <Window.DataContext>
         <model:ApplicationData x:Name="applicationData" />
     </Window.DataContext>
-    
+
     <Grid >
         <Grid.RowDefinitions>
             <RowDefinition Height="20"/>
@@ -26,56 +24,65 @@
             <ColumnDefinition Width="300"/>
         </Grid.ColumnDefinitions>
         <Menu Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2">
-        <MenuItem Header="_Menu">
-            <MenuItem x:Name="miAcceuil" Header="_Acceuil" Click="miAcceuil_Click" />
-            <MenuItem x:Name="miCategorie" Header="_Catégories" Click="miCategorie_Click" />
-            <MenuItem x:Name="miPersonnel" Header="_Personnel" Click="miPersonnel_Click" />
-            <MenuItem x:Name="miMateriel" Header="_Matériaux" Click="miMateriel_Click" />
-            <MenuItem x:Name="miAttribution" Header="_Attributions" Click="miAttribution_Click" />
-            <MenuItem x:Name="miQuitter" Header="_Quitter" Click="miQuitter_Click" />
-        </MenuItem>
-        <MenuItem Header="_A propos"/>
-    </Menu>
+            <MenuItem Header="_Menu">
+                <MenuItem x:Name="miAcceuil" Header="_Acceuil" Click="miAcceuil_Click" />
+                <MenuItem x:Name="miCategorie" Header="_Catégories" Click="miCategorie_Click" />
+                <MenuItem x:Name="miPersonnel" Header="_Personnel" Click="miPersonnel_Click" />
+                <MenuItem x:Name="miMateriel" Header="_Matériaux" Click="miMateriel_Click" />
+                <MenuItem x:Name="miAttribution" Header="_Attributions" Click="miAttribution_Click" />
+                <MenuItem x:Name="miQuitter" Header="_Quitter" Click="miQuitter_Click" />
+            </MenuItem>
+            <MenuItem Header="_A propos"/>
+        </Menu>
 
-    <ListView
+        <ListView
         Grid.Row="1"
         Grid.Column="0"
                 x:Name="lvCategorie"
-                Width="318"
-                Height="318"
-                Margin="20,0,0,0"
-                ItemsSource="{Binding Path=LesCategories}">
-        <ListView.View>
-            <GridView>
-                <GridViewColumn DisplayMemberBinding="{Binding Path=IdCategorie}" Header="ID" />
-                <GridViewColumn DisplayMemberBinding="{Binding Path=NomCategorie}" Header="Nom" />
+                Margin="10,10,10,10"
+                ItemsSource="{Binding Path=LesCategories}" >
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn DisplayMemberBinding="{Binding Path=IdCategorie}" Header="ID" />
+                    <GridViewColumn DisplayMemberBinding="{Binding Path=NomCategorie}" Header="Nom" />
 
-            </GridView>
-        </ListView.View>
-    </ListView>
-    <StackPanel Width="307" Grid.Column="1" Grid.Row="1" >
-        <Button
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <StackPanel
+            Grid.Column="1"
+            Margin="23,-2,-23,0"
+            VerticalAlignment="Top"
+            Orientation="Horizontal" Grid.RowSpan="2">
+            <StackPanel Width="307">
+                <Button
                     x:Name="btCreer"
                     Width="252"
                     Height="40"
-                    Margin="40,30,0,0"
-                    HorizontalAlignment="Center"
-                    Click="btCreer_Click"
-                    Content="Créer" />
-        <Button
-                    x:Name="btModifier"
+                    Margin="0,30,0,0"
+                    HorizontalAlignment="Left"
+                    Content="Créer" Click="btCreer_Click" />
+                <Button
+                                        x:Name="btModifier"
+
                     Width="252"
                     Height="40"
-                    Margin="40,30,0,0"
-                    Click="btModifier_Click"
-                    Content="Modifier" />
-        <Button
-                    x:Name="btSupprimer"
+                    Margin="0,30,0,0"
+                     HorizontalAlignment="Left"
+                    Content="Modifier" Click="btModifier_Click" />
+                <Button
+                                        x:Name="btSupprimer"
+
                     Width="252"
                     Height="40"
-                    Margin="40,30,0,0"
+                    Margin="0,30,0,0"
+                     HorizontalAlignment="Left"
                     Content="Supprimer" Click="btSupprimer_Click" />
-    </StackPanel>
+
+            </StackPanel>
+
+
+        </StackPanel>
     </Grid>
 
 </Window>

@@ -6,12 +6,12 @@
         xmlns:local="clr-namespace:MatInfo"
         xmlns:model="clr-namespace:MatInfo.Model"
         mc:Ignorable="d"
-        Title="WindowCM_Categorie" Height="200" Width="300" WindowStartupLocation="CenterOwner">
+        Title="WindowCM_Categorie" Height="150" Width="200" WindowStartupLocation="CenterOwner" MaxWidth="200" MaxHeight="200" MinWidth="150" MinHeight="150">
     <Grid>
-        <Label Content="Nom de la catégorie : " HorizontalAlignment="Center" Margin="0,66,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="tbCategorie" HorizontalAlignment="Center" Margin="0,92,0,0" TextWrapping="Wrap" Text="{Binding NomCategorie,ValidatesOnExceptions=True}" VerticalAlignment="Top" Width="128" />
-        <Button x:Name="btCreer" Content="Ajouter" Click="BtCreer_Click" HorizontalAlignment="Left" Margin="86,132,0,0" VerticalAlignment="Top" Width="64"/>
-        <Button x:Name="btAnnuler" Content="Annuler" Click="BtAnnuler_Click" HorizontalAlignment="Left" Margin="155,132,0,0" VerticalAlignment="Top" Width="64"/>
+        <Label Content="Nom de la catégorie : " HorizontalAlignment="Left" Margin="35,17,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="tbCategorie" HorizontalAlignment="Left" Margin="34,43,0,0" TextWrapping="Wrap" Text="{Binding NomCategorie,ValidatesOnExceptions=True}" VerticalAlignment="Top" Width="128" />
+        <Button x:Name="btCreer" Content="Ajouter" Click="BtCreer_Click" HorizontalAlignment="Left" Margin="29,83,0,0" VerticalAlignment="Top" Width="64" IsDefault="True"/>
+        <Button x:Name="btAnnuler" Content="Annuler" Click="BtAnnuler_Click" HorizontalAlignment="Left" Margin="114,83,0,0" VerticalAlignment="Top" Width="64"/>
 
     </Grid>
 </Window>

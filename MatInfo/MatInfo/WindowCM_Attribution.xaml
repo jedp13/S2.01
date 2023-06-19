@@ -5,14 +5,14 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MatInfo"
         mc:Ignorable="d"
-        Title="WindowCM_Attribution" Height="300" Width="500" MinHeight="300" MinWidth="500">
+        Title="WindowCM_Attribution" Height="300" Width="550" MinHeight="300" MinWidth="550" MaxHeight="300" MaxWidth="550" WindowStartupLocation="CenterOwner">
     <Grid>
         <ComboBox x:Name="cbMateriel" HorizontalAlignment="Left" Margin="10,57,0,0" VerticalAlignment="Top" Width="217" SelectedItem="{Binding UnMateriel, ValidatesOnExceptions=True}"/>
         <ComboBox x:Name="cbPersonnel" HorizontalAlignment="Left" Margin="273,57,0,0" VerticalAlignment="Top" Width="217" SelectedItem="{Binding UnPersonnel, ValidatesOnExceptions=True}"/>
         <Label Content="Materiel : " HorizontalAlignment="Left" Margin="10,33,0,0" VerticalAlignment="Top"/>
         <Label Content="Personnel : " HorizontalAlignment="Left" Margin="273,33,0,0" VerticalAlignment="Top"/>
-        <DatePicker x:Name="dpDate"  HorizontalAlignment="Center" Margin="0,103,0,0" VerticalAlignment="Top" Height="52" Width="226" SelectedDate="{Binding DateAttribution, ValidatesOnExceptions=True}"/>
-        <Button x:Name="btCreer" Content="Ajouter" Click="BtCreer_Click" HorizontalAlignment="Left" Margin="175,236,0,0" VerticalAlignment="Top" Width="64"/>
+        <DatePicker x:Name="dpDate"  HorizontalAlignment="Left" Margin="141,105,0,0" VerticalAlignment="Top" Height="52" Width="226" SelectedDate="{Binding DateAttribution, ValidatesOnExceptions=True}"/>
+        <Button x:Name="btCreer" Content="Ajouter" Click="BtCreer_Click" HorizontalAlignment="Left" Margin="175,236,0,0" VerticalAlignment="Top" Width="64" IsDefault="True"/>
         <Button x:Name="btAnnuler" Content="Annuler" Click="BtAnnuler_Click" HorizontalAlignment="Left" Margin="250,236,0,0" VerticalAlignment="Top" Width="64"/>
         <Label Content="Commentaire : " HorizontalAlignment="Left" Margin="194,178,0,0" VerticalAlignment="Top"/>
         <TextBox x:Name="tbCommentaire" TextWrapping="Wrap" Text="{Binding CommentaireAttribution, ValidatesOnExceptions=True}" Width="120"  VerticalAlignment="Top" Margin="194,209,0,0" HorizontalAlignment="Left"  />

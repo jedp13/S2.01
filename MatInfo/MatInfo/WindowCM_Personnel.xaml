@@ -15,7 +15,7 @@
         <Label Content="Mail du personnel : " HorizontalAlignment="Left" Margin="86,88,0,0" VerticalAlignment="Top"/>
         <TextBox x:Name="tbMailPerso" HorizontalAlignment="center" Margin="0,114,0,0" TextWrapping="Wrap" Text="{Binding EmailPersonnel,ValidatesOnExceptions=True}" VerticalAlignment="Top" Width="201" />
 
-        <Button x:Name="btCreer" Content="Ajouter" Click="BtCreer_Click" HorizontalAlignment="Left" Margin="86,137,0,0" VerticalAlignment="Top" Width="64" RenderTransformOrigin="0.539,1.655"/>
+        <Button x:Name="btCreer" Content="Ajouter" Click="BtCreer_Click" HorizontalAlignment="Left" Margin="86,137,0,0" VerticalAlignment="Top" Width="64" RenderTransformOrigin="0.539,1.655"  IsDefault="True"/>
         <Button x:Name="btAnnuler" Content="Annuler" Click="BtAnnuler_Click" HorizontalAlignment="Left" Margin="150,137,0,0" VerticalAlignment="Top" Width="64" RenderTransformOrigin="0.516,1.756"/>
 
     </Grid>

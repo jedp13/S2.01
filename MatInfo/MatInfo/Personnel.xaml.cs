@@ -29,43 +29,46 @@ namespace MatInfo
         private void miAcceuil_Click(object sender, RoutedEventArgs e)
         {
             MainWindow mainwindow = new MainWindow();
-            mainwindow.ShowDialog();
-            this.Close();
 
+            this.Close();
+            mainwindow.ShowDialog();
         }
 
         private void miCategorie_Click(object sender, RoutedEventArgs e)
         {
             WCategorieMateriel categorieMateriel = new WCategorieMateriel();
-            categorieMateriel.ShowDialog();
+
             this.Close();
+            categorieMateriel.ShowDialog();
         }
 
         private void miPersonnel_Click(object sender, RoutedEventArgs e)
         {
             WPersonnel personnel = new WPersonnel();
-            personnel.ShowDialog();
+
             this.Close();
+            personnel.ShowDialog();
         }
 
         private void miMateriel_Click(object sender, RoutedEventArgs e)
         {
             WMateriel materiel = new WMateriel();
-            materiel.ShowDialog();
+
             this.Close();
+            materiel.ShowDialog();
         }
 
         private void miAttribution_Click(object sender, RoutedEventArgs e)
         {
             WAttribution attribution = new WAttribution();
-            attribution.ShowDialog();
+
             this.Close();
+            attribution.ShowDialog();
         }
 
         private void miQuitter_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
-
         }
 
         private void btCreer_Click(object sender, RoutedEventArgs e)
@@ -83,7 +86,7 @@ namespace MatInfo
             }
         }
 
-        private void btModif_Click(object sender, RoutedEventArgs e)
+        private void btModifier_Click(object sender, RoutedEventArgs e)
         {
             WindowCM_Personnel winAjoutPersonnel = new WindowCM_Personnel((Personnel)lvPersonnel.SelectedItem, Mode.Update,this);
             winAjoutPersonnel.Owner = this;
@@ -96,7 +99,7 @@ namespace MatInfo
             }
         }
 
-        private void btSupr_Click(object sender, RoutedEventArgs e)
+        private void btSupprimer_Click(object sender, RoutedEventArgs e)
         {
             MessageBoxResult result = MessageBox.Show(" Vous êtes sur de vouloir suprimer " + ((Personnel)lvPersonnel.SelectedItem), "Supprimer", MessageBoxButton.YesNo, MessageBoxImage.Warning);
 
