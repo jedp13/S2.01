@@ -22,9 +22,22 @@ namespace MatInfo.Model
         }
 
         public int IdCategorie { get; set; }
-        public String NomCategorie { get; set; }
+        private String? nomCategorie;
         public ObservableCollection<Materiel> LesMateriaux { get; set; }
+        public string? NomCategorie
+        {
+            get
+            {
+                return nomCategorie;
+            }
 
+            set
+            {
+                if (string.IsNullOrWhiteSpace(value))
+                    throw new ArgumentException("Le nom du catégorie doit être renseigné");
+                nomCategorie = value.Substring(0, 1).ToUpper() + value.Substring(1).ToLower();
+            }
+        }
         public void Create()
         {
             DataAccess accesBD = new DataAccess();

@@ -45,16 +45,26 @@ namespace MatInfo
 
         private void BtCreer_Click(object sender, RoutedEventArgs e)
         {
+            this.tbCodeBarMat.GetBindingExpression(TextBox.TextProperty).UpdateSource();
+            this.tbNomMat.GetBindingExpression(TextBox.TextProperty).UpdateSource();
+            this.tbRefMat.GetBindingExpression(TextBox.TextProperty).UpdateSource();
+            this.cbCategorie.GetBindingExpression(ComboBox.SelectedItemProperty).UpdateSource();
+
+
             if (String.IsNullOrEmpty(tbNomMat.Text) || String.IsNullOrEmpty(tbRefMat.Text) || String.IsNullOrEmpty(tbCodeBarMat.Text) || cbCategorie.SelectedIndex ==-1)
             {
                 MessageBox.Show("Erreur : Le nom, le ref et codebarre sont attendus !", "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
             }
             else
             {
-               
+             
 
                 if (Validation.GetHasError((DependencyObject)tbRefMat) || Validation.GetHasError((DependencyObject)tbCodeBarMat) || Validation.GetHasError((DependencyObject)tbNomMat)|| Validation.GetHasError((DependencyObject)cbCategorie))
                     MessageBox.Show(this.Owner, "Pas possible!", "Pb", MessageBoxButton.OK, MessageBoxImage.Error);
+                else if (((WMateriel)Owner).applicationData.LesMateriaux.ToList().Find(p => p.CodeBarreInventaire == this.tbCodeBarMat.Text) is not null)
+                {
+                    MessageBox.Show(this.Owner, "Cette matériel existe deja, vous utiliser un autre code barre", "Matériel existe déjà", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
                 else
                 {
                     DialogResult = true;   // ferme automatiquement la fenêtre      

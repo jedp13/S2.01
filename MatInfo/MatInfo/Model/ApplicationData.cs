@@ -10,7 +10,7 @@ using MatInfo.Model;
 
 namespace MatInfo.Model
 {
-    internal class ApplicationData
+    public class ApplicationData
     {
         public ObservableCollection<Personnel> LesPersonnels { get; set; }
         public ObservableCollection<CategorieMateriel> LesCategories { get; set; }

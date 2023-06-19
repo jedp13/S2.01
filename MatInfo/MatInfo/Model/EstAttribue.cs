@@ -6,11 +6,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Navigation;
 
 namespace MatInfo.Model
 {
     public class EstAttribue : Crud<EstAttribue>
     {
+
         public EstAttribue(int fK_IdPersonnel, int fK_IdMateriel, DateTime dateAttribution, string commentaireAttribution)
         {
             FK_IdPersonnel = fK_IdPersonnel;
@@ -20,18 +22,63 @@ namespace MatInfo.Model
         }
         public EstAttribue() { }
 
-        public int FK_IdPersonnel { get; set; }
+        public int FK_IdPersonnel { get; set;}
         public int FK_IdMateriel { get; set; }
-        public DateTime DateAttribution { get; set; }
+        private DateTime? dateAttribution;
         public String CommentaireAttribution { get; set; }
-        public Materiel UnMateriel { get; set; }
-        public Personnel UnPersonnel { get; set; }
+
+        public Materiel? UnMateriel
+        {
+            get
+            {
+                return unMateriel;
+            }
+
+            set
+            {
+                if (value is null)
+                    throw new ArgumentException("Le matétiel de l'attribution doit être renseigné");
+                unMateriel = value;
+            }
+        }
+
+        public Personnel? UnPersonnel
+        {
+            get
+            {
+                return unPersonnel;
+            }
+
+            set
+            {
+                if (value is null)
+                    throw new ArgumentException("Le personnel de l'attribution doit être renseigné");
+                unPersonnel = value;
+            }
+        }
+
+        public DateTime? DateAttribution
+        {
+            get
+            {
+                return dateAttribution;
+            }
+
+            set
+            {
+                if (value is null)
+                    throw new ArgumentException("La date de l'attribution doit être renseigné");
+                dateAttribution = value;
+            }
+        }
+
+        private Materiel? unMateriel;
+        private Personnel? unPersonnel;
         public void Create()
         {
             DataAccess accesBD = new DataAccess();
             String requete = $"insert into est_attribue( idpersonnel, idmateriel,dateattribution,commentaireattribution)  values({ this.UnPersonnel.IdPersonnel},{ this.UnMateriel.IdMateriel},'{ this.DateAttribution}','{ this.CommentaireAttribution}') ;";
             accesBD.SetData(requete);
-
 
         }
 
@@ -74,6 +121,11 @@ namespace MatInfo.Model
             DataAccess accesBD = new DataAccess();
             String requete = $"Update materiel SET idpersonnel={this.UnPersonnel.IdPersonnel}, idmateriel ={this.UnMateriel.IdMateriel}, dateattribution ='{this.DateAttribution}', commentaireattribution ='{this.CommentaireAttribution}' where idmateriel= {this.UnMateriel.IdMateriel} and dateattribution ='{this.DateAttribution}' and idpersonnel={this.UnPersonnel.IdPersonnel} ";
             accesBD.SetData(requete);
+        }
+
+        public override string? ToString()
+        {
+            return this.UnPersonnel + " ( " + this.UnMateriel.NomMateriel + " ) : " + ( (DateTime) this.DateAttribution).ToString("dd/MM/yyyy");
         }
     }
 }

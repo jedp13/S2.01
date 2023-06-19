@@ -67,7 +67,7 @@ namespace MatInfo
             {
                 CategorieMateriel c = (CategorieMateriel)winAjoutCategorie.DataContext;
                 c.Create();
-                applicationData.LesCategories.Insert(applicationData.LesPersonnels.Count+1, c);
+                applicationData.LesCategories.Insert(applicationData.LesPersonnels.Count, c);
             }
         }
 
@@ -90,7 +90,7 @@ namespace MatInfo
 
         private void btSupprimer_Click(object sender, RoutedEventArgs e)
         {
-            MessageBoxResult result = MessageBox.Show(" Vous êtes sur de vouloir suprimer " + ((CategorieMateriel)lvCategorie.SelectedItem).NomCategorie, "Supprimer", MessageBoxButton.YesNo, MessageBoxImage.Warning);
+            MessageBoxResult result = MessageBox.Show(" Vous êtes sur de vouloir suprimer " + ((CategorieMateriel)lvCategorie.SelectedItem), "Supprimer", MessageBoxButton.YesNo, MessageBoxImage.Warning);
 
             if (result == MessageBoxResult.Yes)
             {

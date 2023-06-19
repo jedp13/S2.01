@@ -58,7 +58,7 @@ namespace MatInfo
             personnel.ShowDialog();
         }
 
-        private void Creer_Click(object sender, RoutedEventArgs e)
+        private void btCreer_Click(object sender, RoutedEventArgs e)
         {
             WindowCM_Attribution winAjoutAttribution = new WindowCM_Attribution(new EstAttribue(), Mode.Insert, this);
 
@@ -68,7 +68,37 @@ namespace MatInfo
             {
                 EstAttribue a = (EstAttribue)winAjoutAttribution.DataContext;
                 a.Create();
-                applicationData.LesAttributions.Insert(applicationData.LesAttributions.Count + 1, a);
+                applicationData.LesAttributions.Insert(applicationData.LesAttributions.Count , a);
+            }
+        }
+
+        private void btModifier_Click(object sender, RoutedEventArgs e)
+        {
+
+            WindowCM_Attribution winAjoutAttribution = new WindowCM_Attribution((EstAttribue)lvAttribution.SelectedItem, Mode.Update, this);
+            winAjoutAttribution.Owner = this;
+
+            bool reponse = (bool)winAjoutAttribution.ShowDialog();
+            if (reponse == true)
+            {
+                Materiel a = (Materiel)lvAttribution.SelectedItem; // (Materiel)winAjoutMateriel.DataContext;
+                a.Update();
+            }
+
+
+
+        }
+
+        private void btSupprimer_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBoxResult result = MessageBox.Show(" Vous êtes sur de vouloir suprimer " + ((EstAttribue)lvAttribution.SelectedItem) , "Supprimer", MessageBoxButton.YesNo, MessageBoxImage.Warning);
+
+            if (result == MessageBoxResult.Yes)
+            {
+                Materiel a = (Materiel)lvAttribution.SelectedItem;
+                a.Delete();
+                applicationData.LesMateriaux.Remove(a);
+                lvAttribution.SelectedIndex = 0;
             }
         }
     }

@@ -38,6 +38,8 @@ namespace MatInfo
 
         private void BtCreer_Click(object sender, RoutedEventArgs e)
         {
+            this.tbCategorie.GetBindingExpression(TextBox.TextProperty).UpdateSource();
+
             if (String.IsNullOrEmpty(tbCategorie.Text))
             {
                 MessageBox.Show("Erreur : Nom de categorie attendu !", "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
@@ -47,6 +49,10 @@ namespace MatInfo
                 // on doit déclencher la mise à jour du binding
                 if (Validation.GetHasError((DependencyObject)tbCategorie))
                     MessageBox.Show(this.Owner, "Pas possible!", "Pb", MessageBoxButton.OK, MessageBoxImage.Error);
+                else if (((WCategorieMateriel)Owner).applicationData.LesCategories.ToList().Find(p => p.NomCategorie == this.tbCategorie.Text) is not null)
+                {
+                    MessageBox.Show(this.Owner, "Cette catégorie existe deja, prier utiliser un autre mail", "Nom deja prise", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
                 else
                 {
                     DialogResult = true;   // ferme automatiquement la fenêtre      

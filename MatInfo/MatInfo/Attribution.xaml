@@ -25,18 +25,19 @@
             <ListView x:Name="lvAttribution" Height="321" Width="406" Margin="20,0,0,0" ItemsSource="{Binding Path=LesAttributions}">
                 <ListView.View>
                     <GridView>
-                        <GridViewColumn Header="ID Personnel " DisplayMemberBinding="{Binding Path=IdPersonnel}" />
-                        <GridViewColumn Header="ID Matériel" DisplayMemberBinding="{Binding Path=FK_IdMateriel}" />
-                        <GridViewColumn Header="Date" DisplayMemberBinding="{Binding Path=DateAttribution}" />
+                        <GridViewColumn Header="Nom " DisplayMemberBinding="{Binding Path=UnPersonnel.NomPersonnel}" />
+                        <GridViewColumn Header="Prenom " DisplayMemberBinding="{Binding Path=UnPersonnel.PrenomPersonnel}" />
+                        <GridViewColumn Header="Matériel" DisplayMemberBinding="{Binding Path=UnMateriel.NomMateriel}" />
+                        <GridViewColumn Header="Date" DisplayMemberBinding="{Binding Path=DateAttribution, StringFormat='dd/MM/yyyy'}" />
                         <GridViewColumn Header="Commentaire" DisplayMemberBinding="{Binding Path=CommentaireAttribution}" />
 
                     </GridView>
                 </ListView.View>
             </ListView>
             <StackPanel Width="307">
-                <Button Content="Créer" Width="252" Height="40" Margin="40,30,0,0" HorizontalAlignment="Center" Click="Creer_Click" />
-                <Button Content="Modifier" Width="252" Height="40" Margin="40,30,0,0"/>
-                <Button Content="Supprimer" Width="252" Height="40" Margin="40,30,0,0"/>
+                <Button x:Name="btCreer" Content="Créer" Width="252" Height="40" Margin="40,30,0,0" HorizontalAlignment="Center" Click="btCreer_Click" />
+                <Button x:Name="btModifier" Content="Modifier" Width="252" Height="40" Margin="40,30,0,0" Click="btModifier_Click"/>
+                <Button x:Name="btSupprimer" Content="Supprimer" Width="252" Height="40" Margin="40,30,0,0" Click="btSupprimer_Click"/>
                 
             </StackPanel>
 

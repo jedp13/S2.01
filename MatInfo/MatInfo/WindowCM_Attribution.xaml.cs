@@ -28,6 +28,7 @@ namespace MatInfo
             this.mode = mode;
             this.Owner = owner;
             this.DataContext = atr;
+            atr.DateAttribution = DateTime.Today;
             InitializeComponent();
             this.cbMateriel.ItemsSource = ((ApplicationData)this.Owner.DataContext).LesMateriaux;
             this.cbPersonnel.ItemsSource = ((ApplicationData)this.Owner.DataContext).LesPersonnels;
@@ -50,7 +51,13 @@ namespace MatInfo
 
         private void BtCreer_Click(object sender, RoutedEventArgs e)
         {
-            if ( cbMateriel.SelectedIndex == -1 || cbPersonnel.SelectedIndex == -1/*||dpDate.*/)
+            this.tbCommentaire.GetBindingExpression(TextBox.TextProperty).UpdateSource();
+            this.cbMateriel.GetBindingExpression(ComboBox.SelectedItemProperty).UpdateSource();
+            this.cbPersonnel.GetBindingExpression(ComboBox.SelectedItemProperty).UpdateSource();
+            this.dpDate.GetBindingExpression(DatePicker.SelectedDateProperty).UpdateSource();
+
+
+            if ( cbMateriel.SelectedIndex == -1 || cbPersonnel.SelectedIndex == -1||dpDate.SelectedDate is null)
             {
                 MessageBox.Show("Erreur : Le materiel, le personnel et date sont attendus !", "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
             }
@@ -60,6 +67,10 @@ namespace MatInfo
 
                 if (Validation.GetHasError((DependencyObject)cbMateriel) || Validation.GetHasError((DependencyObject)cbPersonnel) || Validation.GetHasError((DependencyObject)dpDate) )
                     MessageBox.Show(this.Owner, "Pas possible!", "Pb", MessageBoxButton.OK, MessageBoxImage.Error);
+                else if (((WAttribution)Owner).applicationData.LesAttributions.ToList().Find(p => p.UnMateriel.IdMateriel == ((Materiel)this.cbMateriel.SelectedItem).IdMateriel) is not null&& ((WAttribution)Owner).applicationData.LesAttributions.ToList().Find(p => p.UnPersonnel.IdPersonnel == ((Personnel)this.cbPersonnel.SelectedItem).IdPersonnel) is not null && ((WAttribution)Owner).applicationData.LesAttributions.ToList().Find(p => p.DateAttribution == this.dpDate.SelectedDate) is not null)
+                {
+                    MessageBox.Show(this.Owner, "Cette attribution existe deja", "Attribution existe déjà", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
                 else
                 {
                     DialogResult = true;   // ferme automatiquement la fenêtre      

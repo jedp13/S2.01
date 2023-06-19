@@ -26,11 +26,73 @@ namespace MatInfo.Model
         }
         public int IdMateriel { get; set; }
         public int FK_IdCategorie { get; set; }
-        public String NomMateriel { get; set; }
-        public String ReferenceConstructeur { get; set; }
-        public String CodeBarreInventaire { get; set; }
-        public CategorieMateriel UneCategorie { get; set; }
+        private String? nomMateriel;
+        private String? referenceConstructeur;
+        private String? codeBarreInventaire;
+        private CategorieMateriel uneCategorie;
         public ObservableCollection<EstAttribue> LesAttributions { get; set; }
+
+
+
+        public string? NomMateriel
+        {
+            get
+            {
+                return nomMateriel;
+            }
+
+            set
+            {
+                if (string.IsNullOrWhiteSpace(value))
+                    throw new ArgumentException("Le nom du matériel doit être renseigné");
+                nomMateriel = value.Substring(0, 1).ToUpper() + value.Substring(1).ToLower();
+            }
+        }
+
+        public string? ReferenceConstructeur
+        {
+            get
+            {
+                return referenceConstructeur;
+            }
+
+            set
+            {
+                if (string.IsNullOrWhiteSpace(value))
+                    throw new ArgumentException("Le référence constructeur du matériel doit être renseigné");
+                referenceConstructeur = value;
+            }
+        }
+
+        public string? CodeBarreInventaire
+        {
+            get
+            {
+                return codeBarreInventaire;
+            }
+
+            set
+            {
+                if (string.IsNullOrWhiteSpace(value))
+                    throw new ArgumentException("Le code barre du matériel doit être renseigné");
+                codeBarreInventaire = value;
+            }
+        }
+
+        public CategorieMateriel UneCategorie
+        {
+            get
+            {
+                return uneCategorie;
+            }
+
+            set
+            {
+                if (value is null)
+                    throw new ArgumentException("Le Categorie du matériel doit être renseigné");
+                uneCategorie = value;
+            }
+        }
 
         public void Create()
         {

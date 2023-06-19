@@ -20,8 +20,9 @@ namespace MatInfo
     /// </summary>
     public partial class WindowCM_Personnel : Window
     {
-        public WindowCM_Personnel(Personnel perso,Mode mode)
+        public WindowCM_Personnel(Personnel perso,Mode mode,Window owner)
         {
+            this.Owner = owner;
             this.DataContext = perso;
             InitializeComponent();
             if (mode == Mode.Update)
@@ -38,6 +39,9 @@ namespace MatInfo
 
         private void BtCreer_Click(object sender, RoutedEventArgs e)
         {
+            this.tbPrenomPerso.GetBindingExpression(TextBox.TextProperty).UpdateSource();
+            this.tbNomPerso.GetBindingExpression(TextBox.TextProperty).UpdateSource();
+            this.tbMailPerso.GetBindingExpression(TextBox.TextProperty).UpdateSource();
             if (String.IsNullOrEmpty(tbPrenomPerso.Text) || String.IsNullOrEmpty(tbNomPerso.Text) || String.IsNullOrEmpty(tbMailPerso.Text))
             {
                 MessageBox.Show("Erreur : Le nom, le prenom et le mail sont attendus !", "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
@@ -48,7 +52,16 @@ namespace MatInfo
                 
 
                 if (Validation.GetHasError((DependencyObject)tbPrenomPerso) || Validation.GetHasError((DependencyObject)tbNomPerso) || Validation.GetHasError((DependencyObject)tbMailPerso))
-                    MessageBox.Show(this.Owner, "Pas possible!", "Pb", MessageBoxButton.OK, MessageBoxImage.Error);
+                {
+                 MessageBox.Show(this.Owner, "Votre mail n'est pas conforme", "Mail mal formulé", MessageBoxButton.OK, MessageBoxImage.Error);
+
+                }
+                else if(((WPersonnel)Owner).applicationData.LesPersonnels.ToList().Find(p => p.EmailPersonnel == this.tbMailPerso.Text)is not null)
+                {
+                    MessageBox.Show(this.Owner, "Ce personnel existe deja, prier utiliser un autre mail", "Mail deja prise", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+
+
                 else
                 {
                     DialogResult = true;   // ferme automatiquement la fenêtre      

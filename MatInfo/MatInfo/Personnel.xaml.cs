@@ -57,7 +57,7 @@ namespace MatInfo
 
         private void btCreer_Click(object sender, RoutedEventArgs e)
         {
-            WindowCM_Personnel winAjoutPersonnel = new WindowCM_Personnel(new Personnel(), Mode.Insert);
+            WindowCM_Personnel winAjoutPersonnel = new WindowCM_Personnel(new Personnel(), Mode.Insert,this);
             winAjoutPersonnel.Owner = this;
 
             bool reponse = (bool)winAjoutPersonnel.ShowDialog();
@@ -65,14 +65,14 @@ namespace MatInfo
             {
                 Personnel p = (Personnel)winAjoutPersonnel.DataContext;
                 p.Create();
-                applicationData.LesPersonnels.Insert(applicationData.LesPersonnels.Count+1, p);
+                applicationData.LesPersonnels.Insert(applicationData.LesPersonnels.Count, p);
 
             }
         }
 
         private void btModif_Click(object sender, RoutedEventArgs e)
         {
-            WindowCM_Personnel winAjoutPersonnel = new WindowCM_Personnel((Personnel)lvPersonnel.SelectedItem, Mode.Update);
+            WindowCM_Personnel winAjoutPersonnel = new WindowCM_Personnel((Personnel)lvPersonnel.SelectedItem, Mode.Update,this);
             winAjoutPersonnel.Owner = this;
 
             bool reponse = (bool)winAjoutPersonnel.ShowDialog();
@@ -85,7 +85,7 @@ namespace MatInfo
 
         private void btSupr_Click(object sender, RoutedEventArgs e)
         {
-            MessageBoxResult result = MessageBox.Show(" Vous êtes sur de vouloir suprimer " + ((Personnel)lvPersonnel.SelectedItem).NomPersonnel+" "+ ((Personnel)lvPersonnel.SelectedItem).PrenomPersonnel, "Supprimer", MessageBoxButton.YesNo, MessageBoxImage.Warning);
+            MessageBoxResult result = MessageBox.Show(" Vous êtes sur de vouloir suprimer " + ((Personnel)lvPersonnel.SelectedItem), "Supprimer", MessageBoxButton.YesNo, MessageBoxImage.Warning);
 
             if (result == MessageBoxResult.Yes)
             {

@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using System.Data;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace MatInfo.Model
@@ -19,14 +20,62 @@ namespace MatInfo.Model
         }
         public Personnel()
         { }
-            
-        
+
+
+        private String? prenomPersonnel;
+        private String? nomPersonnel;
+        private String? emailPersonnel;
 
         public int IdPersonnel { get; set; }
-        public String EmailPersonnel { get; set; }
-        public String NomPersonnel { get; set; }
-        public String PrenomPersonnel { get; set; }
         public ObservableCollection<EstAttribue> LesAttributions { get; set; }
+
+        public string? PrenomPersonnel
+        {
+            get
+            {
+                return prenomPersonnel;
+            }
+
+            set
+            {
+                if (string.IsNullOrWhiteSpace(value))
+                    throw new ArgumentException("Le prenom du personnel doit être renseigné");
+                prenomPersonnel = value.Substring(0, 1).ToUpper() + value.Substring(1).ToLower();
+            }
+        }
+
+        public string? NomPersonnel
+        {
+            get
+            {
+                return nomPersonnel;
+            }
+
+            set
+            {
+                if (string.IsNullOrWhiteSpace(value))
+                    throw new ArgumentException("Le nom du personnel doit être renseigné");
+                nomPersonnel = value.Substring(0, 1).ToUpper() + value.Substring(1).ToLower();
+            }
+        }
+
+        public string? EmailPersonnel
+        {
+            get
+            {
+                return emailPersonnel;
+            }
+
+            set
+            {
+                string regex = @"^[^@\s]+@[^@\s]+\.(com|net|org|gov|fr)$";
+                if (string.IsNullOrWhiteSpace(value)||!Regex.IsMatch(value, regex, RegexOptions.IgnoreCase))
+                    throw new ArgumentException("Le mail du personnel doit être renseigné");
+                //else if(ApplicationData.LesPersonnels.ToList().Find(p => p.EmailPersonnel == value) is not null)
+                emailPersonnel = value;
+            }
+        }
+
         public void Create()
         {
             DataAccess accesBD = new DataAccess();
@@ -81,7 +130,7 @@ namespace MatInfo.Model
 
         public override string? ToString()
         {
-            return this.IdPersonnel+" - "+ this.PrenomPersonnel + " "+this.NomPersonnel;
+            return this.IdPersonnel+" - "+ this.PrenomPersonnel + " " +this.NomPersonnel;
         }
     }
 }

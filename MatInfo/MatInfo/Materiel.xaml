@@ -33,8 +33,7 @@
             <ListView x:Name="lvMateriel" Height="323" Width="406" Margin="20,0,0,0" ItemsSource="{Binding Path=LesMateriaux}">
                 <ListView.View>
                     <GridView>
-                        <GridViewColumn Header="IDMateriel" DisplayMemberBinding="{Binding Path=IdMateriel}" />
-                        <GridViewColumn Header="IDCatégorie" DisplayMemberBinding="{Binding Path=FK_IdCategorie}" />
+                        <GridViewColumn Header="Catégorie" DisplayMemberBinding="{Binding Path=UneCategorie.NomCategorie}" />
                         <GridViewColumn Header="Nom" DisplayMemberBinding="{Binding Path=NomMateriel}" />
                         <GridViewColumn Header="Référence constructeur" DisplayMemberBinding="{Binding Path=ReferenceConstructeur}" />
                         <GridViewColumn Header="Codebarre Inventaire" DisplayMemberBinding="{Binding Path=CodeBarreInventaire}" />

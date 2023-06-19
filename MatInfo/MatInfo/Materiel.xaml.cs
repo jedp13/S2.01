@@ -64,7 +64,7 @@ namespace MatInfo
             {
                 Materiel m = (Materiel)winAjoutMateriel.DataContext;
                 m.Create();
-                applicationData.LesMateriaux.Insert(applicationData.LesMateriaux.Count + 1, m);
+                applicationData.LesMateriaux.Insert(applicationData.LesMateriaux.Count , m);
             }
         }
 
@@ -87,7 +87,7 @@ namespace MatInfo
 
         private void btSupprimer_Click(object sender, RoutedEventArgs e)
         {
-            MessageBoxResult result = MessageBox.Show(" Vous êtes sur de vouloir suprimer " + ((Materiel)lvMateriel.SelectedItem).NomMateriel, "Supprimer", MessageBoxButton.YesNo, MessageBoxImage.Warning);
+            MessageBoxResult result = MessageBox.Show(" Vous êtes sur de vouloir suprimer " + ((Materiel)lvMateriel.SelectedItem), "Supprimer", MessageBoxButton.YesNo, MessageBoxImage.Warning);
 
             if (result == MessageBoxResult.Yes)
             {
