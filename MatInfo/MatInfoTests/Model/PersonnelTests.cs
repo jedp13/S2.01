@@ -66,13 +66,12 @@ namespace MatInfo.Model.Tests
             String requete = $"insert into personnel( idpersonnel, emailpersonnel, nompersonnel,prenompersonnel)  values('150', 'manon.levet@gmail.com','Levet','Manon') ;";
             accesBD.SetData(requete);
             requete = "select count(*) from personnel;";
+            accesBD.GetData(requete);
             String requete1 = $"DELETE FROM personnel WHERE emailpersonnel='manon.levet@gmail.com'";
             accesBD.SetData(requete1);
-            requete = $"select idpersonnel from personnel where emailpersonnel = 'manon.levet@gmail.com'";
-            accesBD.GetData(requete);
             String requete2 = "select count(*) from personnel;";
             accesBD.GetData(requete2);
-            Assert.AreNotEqual(requete, requete2);
+            Assert.AreNotEqual(accesBD.GetData(requete), accesBD.GetData(requete2));
         }
 
        
