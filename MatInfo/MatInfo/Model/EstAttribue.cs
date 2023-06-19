@@ -27,12 +27,24 @@ namespace MatInfo.Model
             CommentaireAttribution = commentaireAttribution;
         }
         public EstAttribue() { }
-
+        /// <summary>
+        /// obtient ou définit l'identifiant du personnel
+        /// </summary>
         public int FK_IdPersonnel { get; set;}
+        /// <summary>
+        /// obtient ou définit l'identifiant du materiel
+        /// </summary>
         public int FK_IdMateriel { get; set; }
         private DateTime? dateAttribution;
+        /// <summary>
+        /// obtient ou définit le commentaire de l'attribution
+        /// </summary>
         public String CommentaireAttribution { get; set; }
-
+        /// <summary>
+        /// obtient ou définit le materiel
+        /// ce champ est obligatoire
+        /// </summary>
+        /// <exception cref="ArgumentException">Envoyé si le materiel est null</exception>
         public Materiel? UnMateriel
         {
             get
@@ -47,7 +59,11 @@ namespace MatInfo.Model
                 unMateriel = value;
             }
         }
-
+        /// <summary>
+        /// obtient ou définit le personnel
+        /// ce champ est obligatoire
+        /// </summary>
+        /// <exception cref="ArgumentException">Envoyé si le personnel est null</exception>
         public Personnel? UnPersonnel
         {
             get
@@ -62,7 +78,11 @@ namespace MatInfo.Model
                 unPersonnel = value;
             }
         }
-
+        /// <summary>
+        /// obtient ou définit la date de l'attribution
+        /// ce champ est obligatoire
+        /// </summary>
+        /// <exception cref="ArgumentException">Envoyé si la date est null</exception>
         public DateTime? DateAttribution
         {
             get
@@ -80,6 +100,9 @@ namespace MatInfo.Model
 
         private Materiel? unMateriel;
         private Personnel? unPersonnel;
+        /// <summary>
+        /// crée une attribution dans la base de donnée
+        /// </summary>
         public void Create()
         {
             DataAccess accesBD = new DataAccess();
@@ -87,14 +110,19 @@ namespace MatInfo.Model
             accesBD.SetData(requete);
 
         }
-
+        /// <summary>
+        /// supprime une attribution dans la base de donnée
+        /// </summary>
         public void Delete()
         {
             DataAccess accesBD = new DataAccess();
             String requete = $"DELETE FROM est_attribue where idmateriel= {this.UnMateriel.IdMateriel} and dateattribution ='{this.DateAttribution}' and idpersonnel={this.UnPersonnel.IdPersonnel}";
             accesBD.SetData(requete);
         }
-
+        /// <summary>
+        /// génère une attribution dans la base de donnée
+        /// </summary>
+        /// <returns>une observable collection</returns>
         public ObservableCollection<EstAttribue> FindAll()
         {
             ObservableCollection<EstAttribue> lesAttributions = new ObservableCollection<EstAttribue>();
@@ -111,7 +139,11 @@ namespace MatInfo.Model
             }
             return lesAttributions;
         }
-
+        /// <summary>
+        /// génère selon un critère une attribution dans la base de donnée
+        /// </summary>
+        /// <param name="criteres">un critère</param>
+        /// <returns>une observable collection</returns>
         public ObservableCollection<EstAttribue> FindBySelection(string criteres)
         {
             ObservableCollection<EstAttribue> lesAttributions = new ObservableCollection<EstAttribue>();
@@ -136,14 +168,18 @@ namespace MatInfo.Model
         {
             throw new NotImplementedException();
         }
-
+        /// <summary>
+        /// met à jour une attribution dans la base de donnée
+        /// </summary>
         public void Update()
         {
             DataAccess accesBD = new DataAccess();
             String requete = $"Update materiel SET idpersonnel={this.UnPersonnel.IdPersonnel}, idmateriel ={this.UnMateriel.IdMateriel}, dateattribution ='{this.DateAttribution}', commentaireattribution ='{this.CommentaireAttribution}' where idmateriel= {this.UnMateriel.IdMateriel} and dateattribution ='{this.DateAttribution}' and idpersonnel={this.UnPersonnel.IdPersonnel} ";
             accesBD.SetData(requete);
         }
-
+        /// <summary>
+        /// gère l'affichage de l'attribution
+        /// </summary>
         public override string? ToString()
         {
             return this.UnPersonnel + " ( " + this.UnMateriel.NomMateriel + " ) : " + ( (DateTime) this.DateAttribution).ToString("dd/MM/yyyy");

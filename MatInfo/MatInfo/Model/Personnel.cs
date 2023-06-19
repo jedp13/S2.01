@@ -98,7 +98,9 @@ namespace MatInfo.Model
                 emailPersonnel = value;
             }
         }
-
+        /// <summary>
+        /// crée un personnel dans la base de donnée
+        /// </summary>
         public void Create()
         {
             DataAccess accesBD = new DataAccess();
@@ -108,7 +110,9 @@ namespace MatInfo.Model
             this.IdPersonnel = int.Parse(accesBD.GetData(requete).Rows[0]["idpersonnel"].ToString());
 
         }
-
+        /// <summary>
+        /// supprimer un personnel dans la base de donnée
+        /// </summary>
         public void Delete()
         {
             DataAccess accesBD = new DataAccess();
@@ -116,7 +120,10 @@ namespace MatInfo.Model
             accesBD.SetData(requete);
 
         }
-
+        /// <summary>
+        /// génère un personnel dans la base de donnée
+        /// </summary>
+        /// <returns>une observable collection</returns>
         public ObservableCollection<Personnel> FindAll()
         {
             ObservableCollection<Personnel> lesPersonnels = new ObservableCollection<Personnel>();
@@ -133,24 +140,28 @@ namespace MatInfo.Model
             }
             return lesPersonnels;
         }
-
+       
         public ObservableCollection<Personnel> FindBySelection(string criteres)
         {
             throw new NotImplementedException();
         }
-
+       
         public void Read()
         {
             throw new NotImplementedException();
         }
-
+        /// <summary>
+        /// met a jour un personnel dans la base de donnée
+        /// </summary>
         public void Update()
         {
             DataAccess accesBD = new DataAccess();
             String requete = $"Update personnel SET nompersonnel='{ this.NomPersonnel}', prenompersonnel ='{this.PrenomPersonnel}', emailpersonnel ='{this.EmailPersonnel}' where idpersonnel='{ this.IdPersonnel}'";
             accesBD.SetData(requete);
         }
-
+        /// <summary>
+        /// gère l'affichage d'un personnel
+        /// </summary>
         public override string? ToString()
         {
             return this.IdPersonnel+" - "+ this.PrenomPersonnel + " " +this.NomPersonnel;

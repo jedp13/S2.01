@@ -25,10 +25,20 @@ namespace MatInfo.Model
         public CategorieMateriel()
         {
         }
-
+        /// <summary>
+        /// obtient ou définit l'identifiant de la categorie
+        /// </summary>
         public int IdCategorie { get; set; }
         private String? nomCategorie;
+        /// <summary>
+        /// obtient ou définit les materiaux
+        /// </summary>
         public ObservableCollection<Materiel> LesMateriaux { get; set; }
+        /// <summary>
+        /// obtient ou définit le nom de la categorie
+        /// ce champ est obligatoire
+        /// </summary>
+        /// <exception cref="ArgumentException">Envoyé si le nom de la categorie est null</exception>
         public string? NomCategorie
         {
             get
@@ -43,6 +53,9 @@ namespace MatInfo.Model
                 nomCategorie = value.Substring(0, 1).ToUpper() + value.Substring(1).ToLower();
             }
         }
+        /// <summary>
+        /// crée une categorie materiel dans la base de donnée
+        /// </summary>
         public void Create()
         {
             DataAccess accesBD = new DataAccess();
@@ -51,7 +64,9 @@ namespace MatInfo.Model
             requete = $"select idcategorie from categorie_materiel where nomcategorie = '{ this.NomCategorie}'";
             this.IdCategorie = int.Parse(accesBD.GetData(requete).Rows[0]["idcategorie"].ToString());
         }
-
+        /// <summary>
+        /// supprime une categorie materiel dans la base de donnée
+        /// </summary>
         public void Delete()
         {
             DataAccess accesBD = new DataAccess();
@@ -60,6 +75,10 @@ namespace MatInfo.Model
             
         }
 
+        /// <summary>
+        /// génère une categorie materiel dans la base de donnée
+        /// </summary>
+        /// <returns>une observable collection</returns>
         public ObservableCollection<CategorieMateriel> FindAll()
         {
             ObservableCollection<CategorieMateriel> lesCategories = new ObservableCollection<CategorieMateriel>();
@@ -77,6 +96,7 @@ namespace MatInfo.Model
             return lesCategories;
         }
 
+       
         public ObservableCollection<CategorieMateriel> FindBySelection(string criteres)
         {
             throw new NotImplementedException();
@@ -87,6 +107,9 @@ namespace MatInfo.Model
             throw new NotImplementedException();
         }
 
+        /// <summary>
+        /// met à jour une categorie materiel dans la base de donnée
+        /// </summary>
         public void Update()
         {
             DataAccess accesBD = new DataAccess();
@@ -94,6 +117,9 @@ namespace MatInfo.Model
             DataTable datas = accesBD.GetData(requete);
         }
 
+        /// <summary>
+        /// gère l'affichage de la categorie materiel
+        /// </summary>
         public override string? ToString()
         {
             return this.IdCategorie+" - "+this.NomCategorie ;
