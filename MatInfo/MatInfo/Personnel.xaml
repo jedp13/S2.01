@@ -32,7 +32,6 @@ Height="450" Width="800" WindowStartupLocation="CenterScreen" MinWidth="600" Min
                 <MenuItem x:Name="miAttribution" Header="_Attributions" Click="miAttribution_Click" />
                 <MenuItem x:Name="miQuitter" Header="_Quitter" Click="miQuitter_Click" />
             </MenuItem>
-            <MenuItem Header="_A propos"/>
         </Menu>
 
         <ListView Grid.Row="1" Grid.Column="0" x:Name="lvPersonnel" Margin="10,5,10,10" ItemsSource="{Binding Path=LesPersonnels}">
