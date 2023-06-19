@@ -26,36 +26,46 @@ namespace MatInfo
             lvAttribution.SelectedIndex = 0;
         }
 
-        private void btCM_Click(object sender, RoutedEventArgs e)
+        private void miAcceuil_Click(object sender, RoutedEventArgs e)
         {
+            MainWindow mainwindow = new MainWindow();
+            mainwindow.ShowDialog();
             this.Close();
 
+        }
+
+        private void miCategorie_Click(object sender, RoutedEventArgs e)
+        {
             WCategorieMateriel categorieMateriel = new WCategorieMateriel();
             categorieMateriel.ShowDialog();
-            
+            this.Close();
         }
 
-        private void btM_Click(object sender, RoutedEventArgs e)
+        private void miPersonnel_Click(object sender, RoutedEventArgs e)
         {
-            this.Close();
-            WMateriel materiel = new WMateriel();
-            materiel.ShowDialog();
-            
-        }
-
-        private void btA_Click(object sender, RoutedEventArgs e)
-        {
-            this.Close();
-            WAttribution attribution = new WAttribution();
-            attribution.ShowDialog();
-            
-        }
-
-        private void btP_Click(object sender, RoutedEventArgs e)
-        {
-            this.Close();
             WPersonnel personnel = new WPersonnel();
             personnel.ShowDialog();
+            this.Close();
+        }
+
+        private void miMateriel_Click(object sender, RoutedEventArgs e)
+        {
+            WMateriel materiel = new WMateriel();
+            materiel.ShowDialog();
+            this.Close();
+        }
+
+        private void miAttribution_Click(object sender, RoutedEventArgs e)
+        {
+            WAttribution attribution = new WAttribution();
+            attribution.ShowDialog();
+            this.Close();
+        }
+
+        private void miQuitter_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+
         }
 
         private void btCreer_Click(object sender, RoutedEventArgs e)

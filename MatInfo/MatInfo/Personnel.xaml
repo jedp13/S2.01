@@ -14,33 +14,47 @@
     <Window.DataContext>
         <model:ApplicationData x:Name="applicationData" />
     </Window.DataContext>
-    <StackPanel>
-        <StackPanel Orientation="Horizontal">
-            <Button x:Name="btCM" Content="Categorie de materiel" Margin="20,0,0,0" Click="btCM_Click"/>
-            <Button x:Name="btM" Content="Materiel" Margin="20,0,0,0" Click="btM_Click"/>
-            <Button x:Name="btA" Content="Attribution" Margin="20,0,0,0" Click="btA_Click"/>
-            <Button x:Name="btP" Content="Personnel" Margin="20,0,0,0" Click="btP_Click"/>
 
-        </StackPanel>
-        <Label HorizontalAlignment="Center" Content="Personnel" />
-        <Label HorizontalAlignment="Left" Content="Liste du personnel" Margin="20,0,0,0" />
+
+    <Grid >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="300"/>
+        </Grid.ColumnDefinitions>
+        <Menu Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2">
+            <MenuItem Header="_Menu">
+                <MenuItem x:Name="miAcceuil" Header="_Acceuil" Click="miAcceuil_Click" />
+                <MenuItem x:Name="miCategorie" Header="_Catégories" Click="miCategorie_Click" />
+                <MenuItem x:Name="miPersonnel" Header="_Personnel" Click="miPersonnel_Click" />
+                <MenuItem x:Name="miMateriel" Header="_Matériaux" Click="miMateriel_Click" />
+                <MenuItem x:Name="miAttribution" Header="_Attributions" Click="miAttribution_Click" />
+                <MenuItem x:Name="miQuitter" Header="_Quitter" Click="miQuitter_Click" />
+            </MenuItem>
+            <MenuItem Header="_A propos"/>
+        </Menu>
+
+        <ListView Grid.Row="1" Grid.Column="0" x:Name="lvPersonnel" Margin="10,5,10,10" ItemsSource="{Binding Path=LesPersonnels}">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="ID" DisplayMemberBinding="{Binding Path=IdPersonnel}" />
+                    <GridViewColumn Header="Nom" DisplayMemberBinding="{Binding Path=NomPersonnel}" />
+                    <GridViewColumn Header="Prénom" DisplayMemberBinding="{Binding Path=PrenomPersonnel}" />
+                    <GridViewColumn Header="Email" DisplayMemberBinding="{Binding Path=EmailPersonnel}" />
+
+                </GridView>
+            </ListView.View>
+        </ListView>
 
         <StackPanel
+            Grid.Row="1"
+            Grid.Column="1"
             Margin="0,10,0,0"
             VerticalAlignment="Center"
             Orientation="Horizontal">
-
-            <ListView x:Name="lvPersonnel" Height="321" Width="406" Margin="20,0,0,0" ItemsSource="{Binding Path=LesPersonnels}">
-                <ListView.View>
-                    <GridView>
-                        <GridViewColumn Header="ID" DisplayMemberBinding="{Binding Path=IdPersonnel}" />
-                        <GridViewColumn Header="Nom" DisplayMemberBinding="{Binding Path=NomPersonnel}" />
-                        <GridViewColumn Header="Prénom" DisplayMemberBinding="{Binding Path=PrenomPersonnel}" />
-                        <GridViewColumn Header="Email" DisplayMemberBinding="{Binding Path=EmailPersonnel}" />
-
-                    </GridView>
-                </ListView.View>
-            </ListView>
             <StackPanel Width="307">
                 <Button
                     x:Name="btCreer"
@@ -63,11 +77,15 @@
                     Height="40"
                     Margin="40,30,0,0"
                     Content="Supprimer" Click="btSupr_Click" />
-              
+
             </StackPanel>
 
 
         </StackPanel>
 
-    </StackPanel>
+    </Grid >
+
+
+
+
 </Window>

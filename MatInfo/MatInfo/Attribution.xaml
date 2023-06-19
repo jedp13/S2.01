@@ -10,19 +10,30 @@
     <Window.DataContext>
         <model:ApplicationData x:Name="applicationData" />
     </Window.DataContext>
-    <StackPanel>
-        <StackPanel Orientation="Horizontal">
-            <Button x:Name="btCM" Content="Categorie de materiel" Margin="20,0,0,0" Click="btCM_Click"/>
-            <Button x:Name="btM" Content="Materiel" Margin="20,0,0,0" Click="btM_Click"/>
-            <Button x:Name="btA" Content="Attribution" Margin="20,0,0,0" Click="btA_Click"/>
-            <Button x:Name="btP" Content="Personnel" Margin="20,0,0,0" Click="btP_Click"/>
 
-        </StackPanel>
-        <Label Content="Attribution" HorizontalAlignment="Center"/>
-        <Label HorizontalAlignment="Left" Content="Liste des attributions" Margin="20,0,0,0" />
 
-        <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="0,10,0,0">
-            <ListView x:Name="lvAttribution" Height="321" Width="406" Margin="20,0,0,0" ItemsSource="{Binding Path=LesAttributions}">
+    <Grid >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="300"/>
+        </Grid.ColumnDefinitions>
+        <Menu Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2">
+            <MenuItem Header="_Menu">
+                <MenuItem x:Name="miAcceuil" Header="_Acceuil" Click="miAcceuil_Click" />
+                <MenuItem x:Name="miCategorie" Header="_Catégories" Click="miCategorie_Click" />
+                <MenuItem x:Name="miPersonnel" Header="_Personnel" Click="miPersonnel_Click" />
+                <MenuItem x:Name="miMateriel" Header="_Matériaux" Click="miMateriel_Click" />
+                <MenuItem x:Name="miAttribution" Header="_Attributions" Click="miAttribution_Click" />
+                <MenuItem x:Name="miQuitter" Header="_Quitter" Click="miQuitter_Click" />
+            </MenuItem>
+            <MenuItem Header="_A propos"/>
+        </Menu>
+
+            <ListView x:Name="lvAttribution" Grid.Row="1" Grid.Column="0" Height="321" Width="406" Margin="20,0,0,0" ItemsSource="{Binding Path=LesAttributions}">
                 <ListView.View>
                     <GridView>
                         <GridViewColumn Header="Nom " DisplayMemberBinding="{Binding Path=UnPersonnel.NomPersonnel}" />
@@ -34,15 +45,44 @@
                     </GridView>
                 </ListView.View>
             </ListView>
+
+        <StackPanel
+            Grid.Row="1"
+            Grid.Column="1"
+            Margin="0,10,0,0"
+            VerticalAlignment="Center"
+            Orientation="Horizontal">
             <StackPanel Width="307">
-                <Button x:Name="btCreer" Content="Créer" Width="252" Height="40" Margin="40,30,0,0" HorizontalAlignment="Center" Click="btCreer_Click" />
-                <Button x:Name="btModifier" Content="Modifier" Width="252" Height="40" Margin="40,30,0,0" Click="btModifier_Click"/>
-                <Button x:Name="btSupprimer" Content="Supprimer" Width="252" Height="40" Margin="40,30,0,0" Click="btSupprimer_Click"/>
-                
+                <Button
+                    x:Name="btCreer"
+                    Width="252"
+                    Height="40"
+                    Margin="40,30,0,0"
+                    HorizontalAlignment="Center"
+                    Content="Créer" Click="btCreer_Click" />
+                <Button
+                                        x:Name="btModifier"
+
+                    Width="252"
+                    Height="40"
+                    Margin="40,30,0,0"
+                    Content="Modifier" Click="btModifier_Click" />
+                <Button
+                                        x:Name="btSupprimer"
+
+                    Width="252"
+                    Height="40"
+                    Margin="40,30,0,0"
+                    Content="Supprimer" Click="btSupprimer_Click" />
+
             </StackPanel>
 
 
         </StackPanel>
 
-    </StackPanel>
+    </Grid >
+
+
+
+   
 </Window>
