@@ -28,6 +28,8 @@ namespace MatInfo
             InitializeComponent();
             seConnecter connecter = new seConnecter();
             connecter.ShowDialog();
+            lv
+            rbTout.
         }
 
 
@@ -71,7 +73,8 @@ namespace MatInfo
         private void miQuitter_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
-
         }
+
+
     }
 }

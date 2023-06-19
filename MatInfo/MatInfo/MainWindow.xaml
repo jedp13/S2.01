@@ -16,44 +16,126 @@
     </Window.DataContext>
 
 
-    <Grid >
+    <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="20"/>
-            <RowDefinition/>
+            <RowDefinition Height="20" />
+            <RowDefinition />
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition/>
-            <ColumnDefinition Width="300"/>
+            <ColumnDefinition />
+            <ColumnDefinition Width="300" />
         </Grid.ColumnDefinitions>
 
 
-        <Menu Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2">
+        <Menu
+            Grid.Row="0"
+            Grid.Column="0"
+            Grid.ColumnSpan="2">
             <MenuItem Header="_Menu">
-                <MenuItem x:Name="miAcceuil" Header="_Acceuil" Click="miAcceuil_Click" />
-                <MenuItem x:Name="miCategorie" Header="_Catégories" Click="miCategorie_Click" />
-                <MenuItem x:Name="miPersonnel" Header="_Personnel" Click="miPersonnel_Click" />
-                <MenuItem x:Name="miMateriel" Header="_Matériaux" Click="miMateriel_Click" />
-                <MenuItem x:Name="miAttribution" Header="_Attributions" Click="miAttribution_Click" />
-                <MenuItem x:Name="miQuitter" Header="_Quitter" Click="miQuitter_Click" />
+                <MenuItem
+                    x:Name="miAcceuil"
+                    Click="miAcceuil_Click"
+                    Header="_Acceuil" />
+                <MenuItem
+                    x:Name="miCategorie"
+                    Click="miCategorie_Click"
+                    Header="_Catégories" />
+                <MenuItem
+                    x:Name="miPersonnel"
+                    Click="miPersonnel_Click"
+                    Header="_Personnel" />
+                <MenuItem
+                    x:Name="miMateriel"
+                    Click="miMateriel_Click"
+                    Header="_Matériaux" />
+                <MenuItem
+                    x:Name="miAttribution"
+                    Click="miAttribution_Click"
+                    Header="_Attributions" />
+                <MenuItem
+                    x:Name="miQuitter"
+                    Click="miQuitter_Click"
+                    Header="_Quitter" />
             </MenuItem>
-            <MenuItem Header="_A propos"/>
+            <MenuItem Header="_A propos" />
         </Menu>
-        <ListView Grid.Row="1" ItemsSource="{Binding }">
+        <ListView Grid.Row="1" ItemsSource="{Binding}">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn/>
+                    <GridViewColumn />
                 </GridView>
             </ListView.View>
         </ListView>
-        <RadioButton Grid.Column="1" Content="Filtrer matériel par catégorie" HorizontalAlignment="Left" Margin="10,80,0,0" Grid.Row="1" VerticalAlignment="Top"/>
-        <RadioButton Grid.Column="1" Content="Filtrer attributions par matériel et personnel
-                     " HorizontalAlignment="Left" Margin="10,207,0,0" Grid.Row="1" VerticalAlignment="Top"/>
-        <ComboBox Grid.Column="1" HorizontalAlignment="Left" Margin="53,137,0,0" Grid.Row="1" VerticalAlignment="Top" Width="120"/>
-        <ComboBox Grid.Column="1" HorizontalAlignment="Left" Margin="53,258,0,0" Grid.Row="1" VerticalAlignment="Top" Width="120"/>
-        <ComboBox Grid.Column="1" HorizontalAlignment="Left" Margin="53,323,0,0" Grid.Row="1" VerticalAlignment="Top" Width="120"/>
-        <Label x:Name="cbCategorie" Grid.Column="1" Content="Catégorie : " HorizontalAlignment="Left" Margin="53,111,0,0" Grid.Row="1" VerticalAlignment="Top"/>
-        <Label x:Name="cbMateriel" Grid.Column="1" Content="Materiel : " HorizontalAlignment="Left" Margin="53,232,0,0" Grid.Row="1" VerticalAlignment="Top"/>
-        <Label x:Name="cbPers" Grid.Column="1" Content="Personnel : " HorizontalAlignment="Left" Margin="53,297,0,0" Grid.Row="1" VerticalAlignment="Top"/>
+        <RadioButton
+            x:Name="rbMatriaux"
+            Grid.Row="1"
+            Grid.Column="1"
+            Margin="8,87,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Content="Filtrer matériel par catégorie" />
+        <RadioButton
+            x:Name="rbAttributions"
+            Grid.Row="1"
+            Grid.Column="1"
+            Margin="8,202,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Content="Filtrer attributions par matériel et personnel" />
+        <RadioButton
+            x:Name="rbTout"
+            Grid.Row="1"
+            Grid.Column="1"
+            Margin="8,24,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Content="Tout Afficher" />
+
+        <ComboBox x:Name="cbCategorie"
+            Grid.Row="1"
+            Grid.Column="1"
+            Width="120"
+            Margin="51,143,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            ItemsSource="{Binding LesCategories}" />
+        <ComboBox x:Name="cbMateriel"
+            Grid.Row="1"
+            Grid.Column="1"
+            Width="120"
+            Margin="51,253,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top" 
+            ItemsSource="{Binding LesMateriaux}" />
+        <ComboBox x:Name="cbPersonne"
+            Grid.Row="1"
+            Grid.Column="1"
+            Width="120"
+            Margin="51,318,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            ItemsSource="{Binding LesPersonnels}"/>
+        <Label
+            Grid.Row="1"
+            Grid.Column="1"
+            Margin="51,118,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Content="Catégorie : " />
+        <Label
+            Grid.Row="1"
+            Grid.Column="1"
+            Margin="51,227,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Content="Materiel : " />
+        <Label
+            Grid.Row="1"
+            Grid.Column="1"
+            Margin="51,292,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Content="Personnel : " />
     </Grid>
 
 
