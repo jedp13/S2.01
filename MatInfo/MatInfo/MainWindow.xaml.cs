@@ -82,27 +82,28 @@ namespace MatInfo
 
         private void SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            string requete = $" join personnel p on est_attribue.idpersonnel = p.idpersonnel join materiel m on est_attribue.idmateriel = m.idmateriel join categorie_materiel c on m.idcategorie = c.idcategorie";
+            string requete1 = $" join personnel p on est_attribue.idpersonnel = p.idpersonnel join materiel m on est_attribue.idmateriel = m.idmateriel join categorie_materiel c on m.idcategorie = c.idcategorie ";
+            string requete2 = "";
             if (lvCategorie.SelectedIndex != -1)
             {
                 lvMateriaux.ItemsSource = ((CategorieMateriel)lvCategorie.SelectedItem).LesMateriaux;
                 lvMateriaux.Items.Refresh();
-                requete = $" join personnel p on est_attribue.idpersonnel = p.idpersonnel join materiel m on est_attribue.idmateriel = m.idmateriel join categorie_materiel c on m.idcategorie = c.idcategorie where c.idcategorie = {((CategorieMateriel)lvCategorie.SelectedItem).IdCategorie}";
+                requete2 = $"  where c.idcategorie = {((CategorieMateriel)lvCategorie.SelectedItem).IdCategorie}";
                 if (lvMateriaux.SelectedIndex != -1)
-                    requete = $" join personnel p on est_attribue.idpersonnel = p.idpersonnel join materiel m on est_attribue.idmateriel = m.idmateriel join categorie_materiel c on m.idcategorie = c.idcategorie where est_attribue.idmateriel = {((Materiel)lvMateriaux.SelectedItem).IdMateriel}";
+                    requete2 = $" where est_attribue.idmateriel = {((Materiel)lvMateriaux.SelectedItem).IdMateriel}";
 
             }
             if (lvPersonnel.SelectedIndex != -1)
             {
-                requete = $" join personnel p on est_attribue.idpersonnel = p.idpersonnel join materiel m on est_attribue.idmateriel = m.idmateriel join categorie_materiel c on m.idcategorie = c.idcategorie where est_attribue.idpersonnel = {((Personnel)lvPersonnel.SelectedItem).IdPersonnel} ";
+                requete2 = $" where est_attribue.idpersonnel = {((Personnel)lvPersonnel.SelectedItem).IdPersonnel} ";
                  if (lvMateriaux.SelectedIndex != -1)
-                    requete = $" join personnel p on est_attribue.idpersonnel = p.idpersonnel join materiel m on est_attribue.idmateriel = m.idmateriel join categorie_materiel c on m.idcategorie = c.idcategorie where est_attribue.idpersonnel = {((Personnel)lvPersonnel.SelectedItem).IdPersonnel} and est_attribue.idmateriel = {((Materiel)lvMateriaux.SelectedItem).IdMateriel}";
+                    requete2 = $" where est_attribue.idpersonnel = {((Personnel)lvPersonnel.SelectedItem).IdPersonnel} and est_attribue.idmateriel = {((Materiel)lvMateriaux.SelectedItem).IdMateriel}";
                  else if(lvCategorie.SelectedIndex != -1)
-                    requete = $" join personnel p on est_attribue.idpersonnel = p.idpersonnel join materiel m on est_attribue.idmateriel = m.idmateriel join categorie_materiel c on m.idcategorie = c.idcategorie where est_attribue.idpersonnel = {((Personnel)lvPersonnel.SelectedItem).IdPersonnel} and c.idcategorie = {((CategorieMateriel)lvCategorie.SelectedItem).IdCategorie}";
+                    requete2 = $" where est_attribue.idpersonnel = {((Personnel)lvPersonnel.SelectedItem).IdPersonnel} and c.idcategorie = {((CategorieMateriel)lvCategorie.SelectedItem).IdCategorie}";
 
             }
             EstAttribue a = new EstAttribue();
-            lvAttributions.ItemsSource = a.FindBySelection(requete);
+            lvAttributions.ItemsSource = a.FindBySelection(requete1+requete2);
             lvAttributions.Items.Refresh();
         }
 
