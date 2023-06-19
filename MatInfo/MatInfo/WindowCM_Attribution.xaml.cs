@@ -21,11 +21,11 @@ namespace MatInfo
 
     public partial class WindowCM_Attribution : Window
     {
-        private Mode mode;
+        private Mode modew;
 
         public WindowCM_Attribution(EstAttribue atr,Mode mode, Window owner)
         {
-            this.mode = mode;
+            this.modew = mode;
             this.Owner = owner;
             this.DataContext = atr;
             atr.DateAttribution = DateTime.Today;
@@ -67,7 +67,7 @@ namespace MatInfo
 
                 if (Validation.GetHasError((DependencyObject)cbMateriel) || Validation.GetHasError((DependencyObject)cbPersonnel) || Validation.GetHasError((DependencyObject)dpDate) )
                     MessageBox.Show(this.Owner, "Pas possible!", "Pb", MessageBoxButton.OK, MessageBoxImage.Error);
-                else if (((WAttribution)Owner).applicationData.LesAttributions.ToList().Find(p => p.UnMateriel.IdMateriel == ((Materiel)this.cbMateriel.SelectedItem).IdMateriel) is not null&& ((WAttribution)Owner).applicationData.LesAttributions.ToList().Find(p => p.UnPersonnel.IdPersonnel == ((Personnel)this.cbPersonnel.SelectedItem).IdPersonnel) is not null && ((WAttribution)Owner).applicationData.LesAttributions.ToList().Find(p => p.DateAttribution == this.dpDate.SelectedDate) is not null)
+                else if (((WAttribution)Owner).applicationData.LesAttributions.ToList().Find(a => a.UnMateriel.IdMateriel == ((Materiel)this.cbMateriel.SelectedItem).IdMateriel) is not null&& ((WAttribution)Owner).applicationData.LesAttributions.ToList().Find(p => p.UnPersonnel.IdPersonnel == ((Personnel)this.cbPersonnel.SelectedItem).IdPersonnel) is not null && ((WAttribution)Owner).applicationData.LesAttributions.ToList().Find(p => p.DateAttribution == this.dpDate.SelectedDate) is not null && modew == Mode.Insert)
                 {
                     MessageBox.Show(this.Owner, "Cette attribution existe deja", "Attribution existe déjà", MessageBoxButton.OK, MessageBoxImage.Error);
                 }

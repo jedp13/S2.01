@@ -19,9 +19,12 @@ namespace MatInfo
     /// Logique d'interaction pour WindowCM_Personnel.xaml
     /// </summary>
     public partial class WindowCM_Personnel : Window
+
     {
+        public Mode modew;
         public WindowCM_Personnel(Personnel perso,Mode mode,Window owner)
         {
+            modew = mode;
             this.Owner = owner;
             this.DataContext = perso;
             InitializeComponent();
@@ -56,7 +59,7 @@ namespace MatInfo
                  MessageBox.Show(this.Owner, "Votre mail n'est pas conforme", "Mail mal formulé", MessageBoxButton.OK, MessageBoxImage.Error);
 
                 }
-                else if(((WPersonnel)Owner).applicationData.LesPersonnels.ToList().Find(p => p.EmailPersonnel == this.tbMailPerso.Text)is not null)
+                else if(((WPersonnel)Owner).applicationData.LesPersonnels.ToList().Find(p => p.EmailPersonnel == this.tbMailPerso.Text)is not null&&modew==Mode.Insert)
                 {
                     MessageBox.Show(this.Owner, "Ce personnel existe deja, prier utiliser un autre mail", "Mail deja prise", MessageBoxButton.OK, MessageBoxImage.Error);
                 }

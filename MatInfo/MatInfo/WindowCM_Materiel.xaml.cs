@@ -20,10 +20,10 @@ namespace MatInfo
     /// </summary>
     public partial class WindowCM_Materiel : Window
     {
-        private Mode mode;
+        private Mode modew;
         public WindowCM_Materiel(Materiel mat, Mode mode, Window owner  )
         {
-            this.mode = mode;
+            this.modew = mode;
             this.Owner = owner;
             this.DataContext = mat;
             InitializeComponent();
@@ -61,7 +61,7 @@ namespace MatInfo
 
                 if (Validation.GetHasError((DependencyObject)tbRefMat) || Validation.GetHasError((DependencyObject)tbCodeBarMat) || Validation.GetHasError((DependencyObject)tbNomMat)|| Validation.GetHasError((DependencyObject)cbCategorie))
                     MessageBox.Show(this.Owner, "Pas possible!", "Pb", MessageBoxButton.OK, MessageBoxImage.Error);
-                else if (((WMateriel)Owner).applicationData.LesMateriaux.ToList().Find(p => p.CodeBarreInventaire == this.tbCodeBarMat.Text) is not null)
+                else if (((WMateriel)Owner).applicationData.LesMateriaux.ToList().Find(m => m.CodeBarreInventaire == this.tbCodeBarMat.Text) is not null && modew == Mode.Insert)
                 {
                     MessageBox.Show(this.Owner, "Cette matériel existe deja, vous utiliser un autre code barre", "Matériel existe déjà", MessageBoxButton.OK, MessageBoxImage.Error);
                 }

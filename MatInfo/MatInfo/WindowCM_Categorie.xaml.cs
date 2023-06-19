@@ -20,8 +20,11 @@ namespace MatInfo
     /// </summary>
     public partial class WindowCM_Categorie : Window
     {
+        private Mode modew;
+
         public WindowCM_Categorie(CategorieMateriel cat, Mode mode)
         {
+            modew = mode;
             this.DataContext = cat;
             InitializeComponent();
             if (mode == Mode.Update)
@@ -49,9 +52,9 @@ namespace MatInfo
                 // on doit déclencher la mise à jour du binding
                 if (Validation.GetHasError((DependencyObject)tbCategorie))
                     MessageBox.Show(this.Owner, "Pas possible!", "Pb", MessageBoxButton.OK, MessageBoxImage.Error);
-                else if (((WCategorieMateriel)Owner).applicationData.LesCategories.ToList().Find(p => p.NomCategorie == this.tbCategorie.Text) is not null)
+                else if (((WCategorieMateriel)Owner).applicationData.LesCategories.ToList().Find(c => c.NomCategorie == this.tbCategorie.Text) is not null && modew == Mode.Insert)
                 {
-                    MessageBox.Show(this.Owner, "Cette catégorie existe deja, prier utiliser un autre mail", "Nom deja prise", MessageBoxButton.OK, MessageBoxImage.Error);
+                    MessageBox.Show(this.Owner, "Cette catégorie existe deja", "Nom deja prise", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
                 else
                 {

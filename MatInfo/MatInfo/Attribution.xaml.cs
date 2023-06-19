@@ -94,7 +94,7 @@ namespace MatInfo
             bool reponse = (bool)winAjoutAttribution.ShowDialog();
             if (reponse == true)
             {
-                Materiel a = (Materiel)lvAttribution.SelectedItem; // (Materiel)winAjoutMateriel.DataContext;
+                EstAttribue a = (EstAttribue)lvAttribution.SelectedItem; // (Materiel)winAjoutMateriel.DataContext;
                 a.Update();
             }
 
@@ -108,9 +108,9 @@ namespace MatInfo
 
             if (result == MessageBoxResult.Yes)
             {
-                Materiel a = (Materiel)lvAttribution.SelectedItem;
+                EstAttribue a = (EstAttribue)lvAttribution.SelectedItem;
                 a.Delete();
-                applicationData.LesMateriaux.Remove(a);
+                applicationData.LesAttributions.Remove(a);
                 lvAttribution.SelectedIndex = 0;
             }
         }
