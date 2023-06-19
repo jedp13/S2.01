@@ -9,6 +9,11 @@ using System.Threading.Tasks;
 
 namespace MatInfo.Model
 {
+    /// <summary>
+    /// stocke 4 informations :
+    /// 1 entier : identifiant du personnel
+    /// 3 chaines : l'email du personnel, le nom du personnel, et le prenom du personnel
+    /// </summary>
     public class Personnel : Crud<Personnel>
     {
         public Personnel(int idPersonnel, string emailPersonnel, string nomPersonnel, string prenomPersonnel)
@@ -26,9 +31,19 @@ namespace MatInfo.Model
         private String? nomPersonnel;
         private String? emailPersonnel;
 
+        /// <summary>
+        /// obtient ou définit l'identifiant du personnel
+        /// </summary>
         public int IdPersonnel { get; set; }
+        /// <summary>
+        /// obtient ou définit les attributions
+        /// </summary>
         public ObservableCollection<EstAttribue> LesAttributions { get; set; }
-
+        /// <summary>
+        /// obtient ou definit le prenom du personnel
+        /// ce champ est obligatoire
+        /// </summary>
+        /// <exception cref="ArgumentException">Envoyé si le prenom est null</exception>
         public string? PrenomPersonnel
         {
             get
@@ -43,7 +58,11 @@ namespace MatInfo.Model
                 prenomPersonnel = value.Substring(0, 1).ToUpper() + value.Substring(1).ToLower();
             }
         }
-
+        /// <summary>
+        /// obtient ou définit le nom du personnel
+        /// ce champ est obligatoire
+        /// </summary>
+        /// <exception cref="ArgumentException">Envoyé si le nom est null</exception>
         public string? NomPersonnel
         {
             get
@@ -58,7 +77,11 @@ namespace MatInfo.Model
                 nomPersonnel = value.Substring(0, 1).ToUpper() + value.Substring(1).ToLower();
             }
         }
-
+        /// <summary>
+        /// obtient ou définit l'email du personnel
+        /// ce champ est obligatoire et doit respecter certaines normes (pas 2 @, doit finir par .com, .fr,...)
+        /// </summary>
+        /// <exception cref="ArgumentException">Envoyé si l'email est null ou si les normes ne sont pas respectées</exception>
         public string? EmailPersonnel
         {
             get

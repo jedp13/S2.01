@@ -9,6 +9,11 @@ using MatInfo;
 
 namespace MatInfo.Model
 {
+    /// <summary>
+    /// stocke 2 informations :
+    /// 1 entier : identifiant de la categorie
+    /// 1 chaine : le nom de la categorie
+    /// </summary>
     public class CategorieMateriel : Crud<CategorieMateriel>
     {
         public CategorieMateriel(int idCategorie, string nomCategorie)

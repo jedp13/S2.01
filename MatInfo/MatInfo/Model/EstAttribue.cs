@@ -10,6 +10,12 @@ using System.Windows.Navigation;
 
 namespace MatInfo.Model
 {
+    /// <summary>
+    /// stocke 4 informations :
+    /// 2 entiers : identifiants du personnel et du materiel
+    /// 1 date : date de l'attribution
+    /// 1 chai,e : le commentaire de l'attribution
+    /// </summary>
     public class EstAttribue : Crud<EstAttribue>
     {
 

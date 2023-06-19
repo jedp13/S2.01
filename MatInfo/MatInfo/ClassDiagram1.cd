@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="FullSignature">
+  <Class Name="MatInfo.Model.CategorieMateriel">
+    <Position X="3.75" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAQAAQAAAAAAAAAEAAAQCAAgAAEAAEABAAAAQAAAAAA=</HashCode>
+      <FileName>Model\CategorieMateriel.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="MatInfo.Model.EstAttribue">
+    <Position X="6" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQEAAAAADAAAAA0gAAQCAAgAAEAAEAEAAEABAAAAAA=</HashCode>
+      <FileName>Model\EstAttribue.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="MatInfo.Model.Materiel">
+    <Position X="8" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAQAAQAAAgEAAAAFAAAQCAAgAAEAAEAAAAACAAICAAA=</HashCode>
+      <FileName>Model\Materiel.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="MatInfo.Model.Personnel">
+    <Position X="10" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CgQAAAAAQAAAAEAEAgAQCAAiAAEAA0AAAAAAAAAAAAA=</HashCode>
+      <FileName>Model\Personnel.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="MatInfo.Model.DataAccess">
+    <Position X="12" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAABEAIAAAAAAAAAABAAAQAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Model\DataAccess.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MatInfo.Model.ApplicationData">
+    <Position X="14" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAABAAAQAAAAAA=</HashCode>
+      <FileName>Model\ApplicationData.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="MatInfo.Model.Crud&lt;T&gt;">
+    <Position X="1.25" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAAAAAAAQCAAgAAEAAEAAAAAAAAAAAAA=</HashCode>
+      <FileName>Model\Crud.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

@@ -9,6 +9,11 @@ using System.Windows;
 
 namespace MatInfo.Model
 {
+    /// <summary>
+    /// stocke 5 informations : 
+    /// 2 entiers : identifiants du materiel et de la categorie
+    /// 3 chaines : nom du materiel, la reference du constructeur, et le code barre
+    /// </summary>
     public class Materiel : Crud<Materiel>
     {
         public Materiel(int idMateriel, int fK_IdCategorie, string nomMateriel, string referenceConstructeur, string codeBarreInventaire)
@@ -24,16 +29,29 @@ namespace MatInfo.Model
         {
 
         }
+        /// <summary>
+        /// obtient ou définit l'identifiant du materiel
+        /// </summary>
         public int IdMateriel { get; set; }
+        /// <summary>
+        /// obtient ou définit l'identifiant de la categorie
+        /// </summary>
         public int FK_IdCategorie { get; set; }
         private String? nomMateriel;
         private String? referenceConstructeur;
         private String? codeBarreInventaire;
         private CategorieMateriel uneCategorie;
+        /// <summary>
+        /// obtient ou définit les attributions
+        /// </summary>
         public ObservableCollection<EstAttribue> LesAttributions { get; set; }
 
 
-
+        /// <summary>
+        /// obtient ou définit le nom du materiel
+        /// ce champ est obligatoire
+        /// </summary>
+        /// <exception cref="ArgumentException">Envoyé si le nom est null</exception>
         public string? NomMateriel
         {
             get
